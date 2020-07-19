@@ -6,6 +6,7 @@
   "author": "indigitious<developer@indigitous.sg>",
   "private": true,
   "scripts": {
+    "build": "quasar build",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
