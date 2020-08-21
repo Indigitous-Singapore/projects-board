@@ -3,7 +3,6 @@ import { reactive } from '@vue/composition-api'
 //  Dummy data
 import projectsData from '../data/projects.data'
 import { InterfaceStateProjects } from 'src/interfaces'
-import projects from '../data/projects.data'
 
 const defaultState: InterfaceStateProjects = {
   projects: []
