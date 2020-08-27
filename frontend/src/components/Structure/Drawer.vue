@@ -1,61 +1,40 @@
 <template>
   <q-drawer
-    v-model="leftDrawerOpen"
-    show-if-above
+    v-model="drawerOpen"
     bordered
-    content-class="bg-grey-1"
+    mini
+    content-class="bg-white"
   >
     <q-list>
-      <EssentialLink
-        v-for="link in essentialLinks"
-        :key="link.title"
-        v-bind="link"
-      />
+      <q-item to="/about" exact>
+        <q-item-section>
+          ABOUT
+        </q-item-section>
+      </q-item>
+      <q-item to="/explore" exact>
+        <q-item-section>
+          EXPLORE
+        </q-item-section>
+      </q-item>
     </q-list>
   </q-drawer>
 </template>
 
 <script>
-import EssentialLink from 'components/Structure/EssentialLink.vue'
+import { defineComponent } from '@vue/composition-api'
 
-export default {
+export default defineComponent({
   name: 'ComponentDrawer',
-  components: {
-    EssentialLink,
-  },
   props: {
     leftDrawerOpen: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
-  setup(props, ctx) {
-
-
-    const essentialLinks = [
-      {
-        title: 'Home',
-        // caption: 'quasar.dev',
-        icon: 'home',
-        link: '/'
-      },
-      {
-        title: 'About',
-        // caption: 'quasar.dev',
-        icon: 'info',
-        link: '/about'
-      },
-      {
-        title: 'Explore',
-        // caption: 'quasar.dev',
-        icon: 'search',
-        link: '/explore'
-      },
-    ]
-
+  setup(props) {
     return {
-      essentialLinks,
+       drawerOpen: props.leftDrawerOpen
     }
   }
-}
+})
 </script>
