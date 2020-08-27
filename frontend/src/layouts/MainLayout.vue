@@ -17,15 +17,15 @@
           <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
           <q-input 
             v-model="search"
-            bg-color="transparent"
-            color="black"
             clearable
-            borderless
+            standout
+            bg-color="white"
             hide-bottom-space
+            :input-style="{ backgroundColor: 'white', color: 'black' }"
             class="col-grow"
           >
             <template v-slot:prepend>
-              <q-icon name="search" />
+              <q-icon name="search" color="grey-9" />
             </template>
           </q-input>
         </q-toolbar>
@@ -78,7 +78,14 @@
                 </h6>
                 <p>Get the latest updates and exclusive promotions from our team.
                 </p>
-                <q-input filled bg-color="white" color="black" v-model="mailingList">
+                <q-input 
+                  bg-color="white"
+                  hide-bottom-space
+                  :input-style="{ backgroundColor: 'white', color: 'black' }"
+                  standout 
+                  color="accent"
+                  v-model="mailingList"
+                >
                   <template v-slot:after>
                     <q-btn round color="accent" dense icon="add" style="margin-left:-30px;" />
                   </template>
@@ -90,11 +97,11 @@
       </div>
       <q-toolbar>
         <div class="col-1"></div>
-        <span class="q-mx-md">© Copyright 2020</span>
-        <q-separator dark vertical inset spaced="lg" class="q-my-md" />
-        <q-btn color="transparent" text-color="grey-4" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md" />
-        <q-separator dark vertical inset spaced="lg" class="q-my-md" />
-         <q-btn color="transparent" text-color="grey-4" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md" />
+        <span class="q-mx-md text-caption text-grey-5">© Copyright 2020</span>
+        <q-separator dark vertical inset spaced="md" class="q-my-md" />
+        <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md text-caption" />
+        <q-separator dark vertical inset spaced="md" class="q-my-md text-caption" />
+         <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md text-caption" />
       </q-toolbar>
     </q-footer>
   </q-layout>
