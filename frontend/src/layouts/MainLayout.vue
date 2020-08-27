@@ -47,9 +47,12 @@
 
     <q-footer bordered class="bg-grey-9 text-white">
       <q-toolbar>
-        <q-toolbar-title>
-          Copyright 2020
-        </q-toolbar-title>
+        <div class="col-1"></div>
+        <span class="q-mx-md">© Copyright 2020</span>
+        <q-separator dark vertical inset spaced="lg" class="q-my-md" />
+        <q-btn color="transparent" text-color="grey-4" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md" />
+        <q-separator dark vertical inset spaced="lg" class="q-my-md" />
+         <q-btn color="transparent" text-color="grey-4" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md" />
       </q-toolbar>
     </q-footer>
   </q-layout>
