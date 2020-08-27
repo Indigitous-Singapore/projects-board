@@ -29,12 +29,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import { ref, Ref, watch, onBeforeMount } from '@vue/composition-api'
 import { useProjects } from '../../services/projects'
-import { InterfaceProject } from 'src/interfaces';
+import { InterfaceProject } from 'src/interfaces'
+import { defineComponent } from '@vue/composition-api'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'PageProjectsSingle',
   setup (props, ctx) {
     const loading = ref(true)
@@ -58,7 +58,8 @@ export default Vue.extend({
     )
 
     return {
-      project
+      project,
+      loading
     }
   }
 });
