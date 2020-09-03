@@ -12,23 +12,23 @@ import { RouteConfig } from 'vue-router';
 const routes: RouteConfig[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/index.vue') }
+      { path: '', component: () => import('../pages/index.vue') }
     ]
   },
   {
     path: '/projects',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: ':projectId', component: () => import('pages/Projects/single.vue') }
+      { path: ':projectId', component: () => import('../pages/Projects/single.vue') }
     ]
   },
   {
     path: '/about',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/About/index.vue') }
+      { path: '', component: () => import('../pages/About/index.vue') }
     ]
   },
   /*
@@ -60,7 +60,7 @@ const routes: RouteConfig[] = [
   // but you can also remove it
   {
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('../pages/Error404.vue')
   }
 ];
 
