@@ -1,50 +1,29 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="column items-center">
+    <header-banner />
+    <how-it-works />
+    <latest-campaigns />
+    <gods-heart />
   </q-page>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-
-import ExampleComponent from 'components/CompositionComponent.vue';
-import { Todo, Meta } from 'components/models';
-
-export default Vue.extend({
-  name: 'PageIndex',
-  components: { ExampleComponent },
-  data() {
-    const todos: Todo[] = [
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ];
-    const meta: Meta = {
-      totalCount: 1200
-    };
-    return { todos, meta };
+import { defineComponent } from '@vue/composition-api'
+import HeaderBanner from '../components/LandingPage/headerBanner.vue'
+import HowItWorks from '../components/LandingPage/howItWorks.vue'
+import LatestCampaigns from '../components/LandingPage/latestCampaigns.vue'
+import GodsHeart from '../components/LandingPage/GodsHeart.vue'
+export default defineComponent({
+  name: 'LandingPage',
+  components: {
+    HeaderBanner,
+    HowItWorks,
+    LatestCampaigns,
+    GodsHeart
+  },
+  setup () {
+    return {
+    }
   }
-});
+})
 </script>
