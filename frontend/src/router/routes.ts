@@ -21,7 +21,7 @@ const routes: RouteConfig[] = [
     path: '/projects',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: ':projectId', component: () => import('../pages/Projects/single.vue') }
+      { path: ':projectId', component: () => import('../pages/Projects/Single.vue') }
     ]
   },
   {
