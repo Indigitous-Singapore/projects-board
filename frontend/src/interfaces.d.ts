@@ -19,6 +19,14 @@ export interface InterfaceProjectUser {
   displayPictureUrl: string;
 }
 
+export interface InterfaceProjectPosition {
+  title: string;
+  commitment: string;
+  skills?: string[];
+  description: string;
+  active: boolean;
+}
+
 export interface InterfaceProject {
   id: number;
   title: string;
@@ -35,6 +43,9 @@ export interface InterfaceProject {
 
   //  Metadata
   user: InterfaceProjectUser;
+
+  //  Open Positions
+  openPositions: InterfaceProjectPosition[],
 
   //  Filters
   fields?: InterfaceProjectField[] | null;

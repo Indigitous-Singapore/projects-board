@@ -1,29 +1,12 @@
 <template>
-  <q-page
-    class="q-pa-xl"
-    >
-    <div class="row q-col-gutter-xl">
-      <div class="column col-12 col-md-6">
-        <img
-          :src="project.displayPictureUrl" 
-          :alt="project.title"
-          />
-      </div>
-      <div class="column col-12 col-md-6">
-        <h1>{{ project.title }}</h1>
-        <h3 class="text-grey-7">{{ project.caption }}</h3>
-
-        <div class="row items-center">
-          <img
-            class="flex author-displayPicture"
-            :src="project.user.displayPictureUrl"
-            :alt="project.user.firstName"
-            />
-          <h5 class="flex author-name q-mb-none q-pl-md">
-            {{ project.user.firstName }}&nbsp;{{ project.user.lastName }}
-          </h5>
-        </div>
-      </div>
+  <q-page>
+    <div class="container">
+      <ProjectHeader
+        :project="project"
+        />
+      <ProjectContent
+        :project="project"
+        />
     </div>
   </q-page>
 </template>
@@ -34,8 +17,15 @@ import { useProjects } from '../../services/projects'
 import { InterfaceProject } from 'src/interfaces'
 import { defineComponent } from '@vue/composition-api'
 
+import ProjectHeader from '../../components/Project/Header.vue'
+import ProjectContent from '../../components/Project/Content.vue'
+
 export default defineComponent({
   name: 'PageProjectsSingle',
+  components: {
+    ProjectHeader,
+    ProjectContent
+  },
   setup (props, ctx) {
     const loading = ref(true)
     const project: Ref<InterfaceProject | undefined> = ref()
@@ -43,7 +33,6 @@ export default defineComponent({
     const { state, getProjects } = useProjects()
 
     const updateProject = () => {
-      console.log(state.projects)
       project.value = state.projects.find(project => project.id === Number(ctx.root.$route.params.projectId))
     }
 
@@ -64,16 +53,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped lang="scss">
-img { 
-  max-width: 100%;
-}
-
-.author-displayPicture {
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-}
-
-</style>
