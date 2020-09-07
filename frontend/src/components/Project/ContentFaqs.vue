@@ -1,8 +1,8 @@
 <template>
 <div id="content-faqs">
-  <div class="text-h4 q-mb-md">
+  <h3 class="q-mb-md">
     Frequently Asked Questions
-  </div>
+  </h3>
   <div
     v-html="project.faqs"
     />

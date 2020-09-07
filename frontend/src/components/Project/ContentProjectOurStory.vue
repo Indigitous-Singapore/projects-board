@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div class="text-h4 q-mb-md">
+  <h3 class="q-mb-md">
     About The Project
-  </div>
+  </h3>
   <div
     v-html="project.aboutOurStory"
     />

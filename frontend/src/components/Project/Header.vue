@@ -1,16 +1,17 @@
 <template>
-<div class="row q-col-gutter-xl">
+<div id="header" class="row q-col-gutter-xl">
   <div class="column col-12 col-md-6">
-    <h1 class="q-mb-md sm-hide md-hide lg-hide xl-hide">{{ project.title }}</h1>
-    <h3 class="text-grey-7 sm-hide md-hide lg-hide xl-hide">{{ project.caption }}</h3>
-    <img
+    <h1 class="q-mb-md md-hide lg-hide xl-hide">{{ project.title }}</h1>
+    <h3 class="text-grey-7 md-hide lg-hide xl-hide">{{ project.caption }}</h3>
+    <q-img
+      :ratio="16/9"
       :src="project.displayPictureUrl" 
       :alt="project.title"
       />
   </div>
   <div class="column col-12 col-md-6">
-    <h1 class="q-mb-sm xs-hide">{{ project.title }}</h1>
-    <h3 class="text-grey-7 xs-hide">{{ project.caption }}</h3>
+    <h1 class="q-mb-sm xs-hide sm-hide">{{ project.title }}</h1>
+    <h3 class="text-grey-7 xs-hide sm-hide">{{ project.caption }}</h3>
 
     <div class="row items-center">
       <img
@@ -65,13 +66,16 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+#header {
+  padding-top: 2em;
+
+  @media (max-width: 1023px) {
+    padding-top:1em;
+  }
+}
 h1{
   font-weight: 600;   
   line-height: 1.2;
-}
-
-img { 
-  max-width: 100%;
 }
 
 .author-displayPicture {

@@ -26,32 +26,19 @@
 
       <q-tab-panels v-model="data.tab" animated class="ndgt-inner-tabs">
         <q-tab-panel name="project" class="q-pa-none">
-          <q-splitter
-            v-model="data.splitterModel"
-            class="transparent"
-          >
-
+          <q-splitter v-model="data.splitterModel" class="transparent xs-hide">
             <template v-slot:before>
               <q-tabs
                 v-model="data.innerTab"
                 vertical
-                class="text-grey-5 ndgt-inner-tabs q-pt-xl"
+                class="text-grey-5 q-pt-lg"
                 active-color="black"
                 indicator-color="transparent"                
                 no-caps
               >
-                <q-tab
-                  name="innerOurStory"
-                  label="OUR STORY"
-                  />
-                <q-tab
-                  name="innerWhatWeDo"
-                  label="WHAT WE DO"
-                  />
-                <q-tab
-                  name="innerCommitment"
-                  label="COMMITMENT"
-                  />
+                <q-tab name="innerOurStory" label="OUR STORY" />
+                <q-tab name="innerWhatWeDo" label="WHAT WE DO" />
+                <q-tab name="innerCommitment" label="COMMITMENT" />
               </q-tabs>
             </template>
 
@@ -59,25 +46,28 @@
               <q-tab-panels
                 v-model="data.innerTab"
                 animated
-                transition-prev="slide-down"
-                transition-next="slide-up"
-                class="q-mt-xl"
               >
-                <q-tab-panel name="innerOurStory">
+                <q-tab-panel name="innerOurStory" class="q-my-lg q-px-none">
                   <ContentProjectOurStory :project="project" />
                 </q-tab-panel>
-
-                <q-tab-panel name="innerWhatWeDo">
+                <q-tab-panel name="innerWhatWeDo" class="q-my-lg q-px-none">
                   <ContentProjectWhatWeDo :project="project" />
                 </q-tab-panel>
-
-                <q-tab-panel name="innerCommitment">
+                <q-tab-panel name="innerCommitment" class="q-my-lg q-px-none">
                   <ContentProjectCommitment :project="project" />
                 </q-tab-panel>
               </q-tab-panels>
             </template>
 
           </q-splitter>
+
+          <div class="sm-hide md-hide lg-hide xl-hide q-mt-xl">
+            <ContentProjectOurStory :project="project" />
+            <q-separator class="q-my-xl"/>
+            <ContentProjectWhatWeDo :project="project" />
+            <q-separator class="q-my-xl"/>
+            <ContentProjectCommitment :project="project" />
+          </div>
         </q-tab-panel>
 
         <q-tab-panel name="how-you-can-help" class="q-pt-xl">
@@ -125,7 +115,7 @@ export default defineComponent({
     const data = reactive({
       tab: 'project',
       innerTab: 'innerOurStory',
-      splitterModel: 20
+      splitterModel: 15
     })
 
     return {
@@ -140,6 +130,16 @@ export default defineComponent({
   .q-tab {
     padding: 0 15px;
     margin-right: 3em;
+
+    @media (max-width: 1023px) {
+      margin-right: 1em;
+    }
+    @media (max-width: 767px) {
+      margin-right: 0.8em;
+    }
+    @media (max-width: 500px) {
+      margin-right: 0em;
+    }
   }
   .q-tab__content, .q-tab__label {
     width: 100%;
@@ -163,7 +163,15 @@ export default defineComponent({
 
 .ndgt-inner-tabs {
   .q-splitter__panel{
-    width: 15% !important;
+    @media (max-width: 1023px) {
+      width: 20% !important;
+    }
+  }
+  .q-splitter__after col {
+    .q-tab-panel {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
   }
   .q-tab__content, .q-tab__label {
     width: 100%;
