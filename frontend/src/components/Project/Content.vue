@@ -70,13 +70,13 @@
           </div>
         </q-tab-panel>
 
-        <q-tab-panel name="how-you-can-help" class="q-pt-xl">
+        <q-tab-panel name="how-you-can-help" class="q-my-lg q-px-none">
           <ContentHowYouCanHelp
             :project="project"
             />
         </q-tab-panel>
 
-        <q-tab-panel name="faqs" class="q-pt-xl">
+        <q-tab-panel name="faqs" class="q-my-lg q-px-none">
           <ContentFaqs
             :project="project"
             />
