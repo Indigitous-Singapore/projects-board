@@ -1,50 +1,47 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="container">
+    <div class="row q-py-lg">
+      <div class="column col-12 col-md-4">
+        <h6 class="text-accent q-mb-none">VISION</h6>
+        <h2>Advancing God's kingdom in the digital space</h2>
+      </div>
+      <div class="column col-12 col-md-7 offset-md-1 justify-center">
+        <p>Indigitous Singapore is a volunteer-led, globally-connected community of Christ followers who desire to use our talents for God in the digital space.</p>
+        <p>Our mission is to raise and support digital missional projects, through a connected and collaborative community.</p>
+      </div>
+    </div>
+
+    <div class="row q-py-lg">
+      <div class="column col-12">
+        <q-separator />
+      </div>
+    </div>
+
+    <div class="row q-py-lg">
+      <div class="column col-12">
+        <h2 class="text-center q-mb-sm">How it works</h2>
+      </div>
+      <div class="column col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <h4 class="text-center">Discover and collaborate with digital projects from communities all over Singapore</h4>
+      </div>
+    </div>
+
   </q-page>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+/*
+import { defineComponent } from '@vue/composition-api'
 
-import ExampleComponent from 'components/CompositionComponent.vue';
-import { Todo, Meta } from 'components/models';
-
-export default Vue.extend({
+export default defineComponent({
   name: 'PageAboutIndex',
-  components: { ExampleComponent },
-  data() {
-    const todos: Todo[] = [
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ];
-    const meta: Meta = {
-      totalCount: 1200
-    };
-    return { todos, meta };
-  }
+
 });
+*/
 </script>
+
+<style scoped lang="scss">
+h2 {
+  font-weight: 700;
+}
+</style>
