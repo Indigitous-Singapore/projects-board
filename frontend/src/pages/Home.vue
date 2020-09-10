@@ -1,7 +1,7 @@
 <template>
   <q-page class="column items-center">
     <header-banner />
-    <div class="q-pa-md full-width column items-center">
+    <div class="q-pa-xl full-width column items-center">
       <how-it-works />
       <q-separator inset />
       <latest-campaigns />
