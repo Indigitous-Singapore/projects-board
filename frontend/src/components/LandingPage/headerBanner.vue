@@ -10,18 +10,18 @@
       height="50vh"
       padding
     >
-      <q-carousel-slide name="1" class="" img-src="~assets/landingbanner.jpg" style="background-color: linear-gradient(90deg, #000000 -13.4%, rgba(68, 68, 68, 0) 68.85%);background-blend-mode: darken;">
+      <q-carousel-slide name="1" class="" img-src="~assets/landingbanner.jpg" style="background-color: rgba(0,0,0,.5);background-blend-mode: multiply;}">
         <div class="row text-white items-center fit">
-          <div class="col-3 offset-2">
-            <h1 class="text-weight-bold">
+          <div class="offset-2" style="width:500px;">
+            <h1 class="text-weight-bold q-mb-md" style="font-size:50px;line-height:61px">
               Advancing God's kingdom in the digital space
             </h1>
-            <p>
+            <p class="q-mb-lg" style="font-size:18px;line-height:23px; width:444px;">
               Join in the pursuit of digital missional projects through a connected and collaborative community 
             </p>
-            <div class="row justify-between">
-              <q-btn color="accent" label="Explore" rounded style="width:40%" />
-              <q-btn outline text-color="black" label="About" rounded style="width:40%" />
+            <div class="row" style="width:401px">
+              <q-btn color="accent" label="Explore" rounded size="18px" class="q-mr-lg" style="width:45%" />
+              <q-btn color="grey-4" text-color="accent" label="About" rounded size="18px" style="width:45%" />
             </div>
           </div>
         </div>
