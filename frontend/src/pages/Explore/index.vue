@@ -16,7 +16,7 @@ import ExampleComponent from 'components/CompositionComponent.vue';
 import { Todo, Meta } from 'components/models';
 
 export default Vue.extend({
-  name: 'PageIndex',
+  name: 'PageExploreIndex',
   components: { ExampleComponent },
   data() {
     const todos: Todo[] = [
