@@ -1,9 +1,9 @@
 <template>
-  <div class="column full-width justify-center text-center q-pa-xl">
+  <div class="column full-width justify-center text-center q-pa-md-xl">
     <h2 class="text-weight-bold">How it works</h2>
     <h4 class="self-center" style="max-width:635px;">Discover and collaborate with digital projects from communities all over Singapore</h4>
-    <div class="row self-center justify-between q-mt-lg">
-      <q-card flat style="width:400px" v-for="sec in howitworks" :key="sec.title">
+    <div class="row self-center justify-xs-center q-mt-lg">
+      <q-card flat style="max-width:400px" v-for="sec in howitworks" :key="sec.title">
         <q-card-section class="row justify-center">
           <q-skeleton size="222px"/>
         </q-card-section>
