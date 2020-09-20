@@ -12,16 +12,16 @@
     >
       <q-carousel-slide name="1" class="" img-src="~assets/landingbanner.jpg" style="background-color: rgba(0,0,0,.5);background-blend-mode: multiply;}">
         <div class="row text-white items-center fit">
-          <div class="offset-2" style="width:500px;">
-            <h1 class="text-weight-bold q-mb-md" style="font-size:50px;line-height:61px">
+          <div class="offset-md-2 offset-xs-1 col-xs-10 col-md-4" style="max-width:500px;">
+            <h1 class="text-weight-bold q-mb-md banner-h1">
               Advancing God's kingdom in the digital space
             </h1>
-            <p class="q-mb-lg" style="font-size:18px;line-height:23px; width:444px;">
+            <p class="q-mb-lg banner-p" style="max-width:444px;">
               Join in the pursuit of digital missional projects through a connected and collaborative community 
             </p>
-            <div class="row" style="width:401px">
-              <q-btn color="accent" label="Explore" rounded size="18px" class="q-mr-lg" style="width:45%" />
-              <q-btn color="grey-4" text-color="accent" label="About" rounded size="18px" style="width:45%" />
+            <div class="row justify-xs-between" style="max-width:401px">
+              <q-btn color="accent" label="Explore" rounded size="1em" class="q-mr-md-lg q-mr-sm-sm" style="width:45%" />
+              <q-btn color="grey-4" text-color="accent" label="About" rounded size="1em" style="width:45%" />
             </div>
           </div>
         </div>
@@ -54,3 +54,29 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="scss" scoped>
+body.screen--xs {
+  .banner-h1 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+  }
+  .banner-p {
+    font-size: 1em;
+    line-height: 1em;
+    text-align: center
+  }
+}
+body.screen--md {
+  .banner-h1 {
+    font-size: 2.3em;
+    line-height: 1.3em;
+    text-align: left;
+  }
+  .banner-p {
+    font-size: 1.3em;
+    line-height: 1em;
+    text-align: left
+  }
+}
+</style>
