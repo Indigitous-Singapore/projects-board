@@ -1,9 +1,9 @@
 <template>
-  <div class="column full-width justify-center text-center q-pa-xl">
-    <div class="row q-px-xl">
+  <div class="column full-width justify-center text-center q-pa-md-xl q-pa-xs-none">
+    <div class="row q-px-xl justify-center">
         <h2 class="text-weight-bold">Latest Projects</h2>
     </div>
-    <div class="row justify-between q-pa-xl">
+    <div class="row justify-center q-pa-md-xl q-pa-xs-none">
       <project-card
         v-for="(card, index) in projects"
         :key="index"
@@ -12,7 +12,8 @@
         :title="card.title"
         :description="card.description"
         :tags="card.tags"
-        style="width:20%"
+        style="max-width:270px"
+        class="q-mr-md q-mb-md"
       />
     </div>
     <div class="row justify-center">
