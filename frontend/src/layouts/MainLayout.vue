@@ -10,27 +10,29 @@
             icon="menu"
             aria-label="Menu"
             @click="toggleDrawer()"
-            class="lt-sm mobile-only"
+            class="lt-md"
           />
-          <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg" />
-          <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
-          <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
-          <q-input 
-            v-model="search"
-            clearable
-            standout
-            bg-color="white"
-            hide-bottom-space
-            :input-style="{ backgroundColor: 'white', color: 'black' }"
-            class="col-grow"
-          >
-            <template v-slot:prepend>
-              <q-icon name="search" color="grey-9" />
-            </template>
-          </q-input>
+          <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md" />
+          <div class="gt-sm row">
+            <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
+            <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
+            <q-input 
+              v-model="search"
+              clearable
+              standout
+              bg-color="white"
+              hide-bottom-space
+              :input-style="{ backgroundColor: 'white', color: 'black' }"
+              class="col-auto"
+            >
+              <template v-slot:prepend>
+                <q-icon name="search" color="grey-9" />
+              </template>
+            </q-input>
+          </div>
         </q-toolbar>
         <q-separator vertical inset />
-        <q-toolbar class="col-auto q-mx-md">
+        <q-toolbar class="col-auto q-mx-md gt-sm">
           <q-btn color="accent" bg-color="white" outline rounded padding="xs lg" label="START A PROJECT" class="accent" />
           <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="LOG IN" />
         </q-toolbar>
@@ -123,6 +125,7 @@ export default defineComponent({
     const mailingList = ref('')
     const toggleDrawer = () => {
       leftDrawerOpen.value  = !leftDrawerOpen.value
+      console.log(leftDrawerOpen.value)
     }
 
     return {
