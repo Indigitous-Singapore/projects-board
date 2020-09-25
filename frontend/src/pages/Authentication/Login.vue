@@ -1,18 +1,18 @@
 <template>
   <q-page class="container column justify-center items-center">
-    <q-card class="q-px-xl q-pt-lg q-my-xl">
+    <q-card class="login">
       <q-card-section>
         <h3 class="text-center q-mb-none"><b>Welcome Back!</b></h3>
-        <h6 class="text-center q-mb-none">Log in to continue</h6>
+        <p class="text-center q-mb-none">Log in to continue</p>
       </q-card-section>
 
-      <q-card-section class="q-pt-lg q-mb-md">
+      <q-card-section class="q-pt-md q-mb-md">
         <AuthenticationLoginForm />
       </q-card-section>
 
       <q-separator />
 
-      <q-card-actions horizontal class="justify-center q-py-lg">
+      <q-card-actions horizontal class="card-actions justify-center q-py-lg q-px-md">
         Don't have an account?&nbsp;<router-link to="/start">Sign up here</router-link>
       </q-card-actions>
     </q-card>
@@ -32,4 +32,14 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.login{
+  @media (min-width: 767px) {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
 </style>
