@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpR fff">
-    <q-header bordered class="bg-white text-black">
+    <q-header bordered class="bg-white text-black xl-hide lg-hide md-hide sm-hide">
       <div class="row">
         <q-toolbar class="col-grow">
           <q-btn
@@ -15,31 +15,11 @@
           <router-link
             to="/"
             >
-            <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md" />
+            <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md"/>
           </router-link>
-          <div class="gt-sm row">
-            <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
-            <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
-            <q-input 
-              v-model="search"
-              clearable
-              standout
-              bg-color="white"
-              hide-bottom-space
-              :input-style="{ backgroundColor: 'white', color: 'black' }"
-              class="col-auto"
-            >
-              <template v-slot:prepend>
-                <q-icon name="search" color="grey-9" />
-              </template>
-            </q-input>
-          </div>
         </q-toolbar>
-        <q-separator vertical inset />
-        <NavbarRight />
       </div>
     </q-header>
-
     <ComponentDrawer
       :leftDrawerOpen="leftDrawerOpen"
       />
@@ -58,21 +38,21 @@ import NavbarRight from 'components/Structure/NavbarRight.vue'
 import Footer from 'components/Structure/Footer.vue'
 import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'
 import { defineComponent, ref } from '@vue/composition-api'
+import { Screen } from 'quasar'
  
 export default defineComponent({
-  name: 'MainLayout',
+  name: 'DashboardLayout',
   components: {
     ComponentDrawer,
-    Footer,
     NavbarRight,
+    Footer
   },
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup (_, ctx) {
+    const leftDrawerOpen = ref(Screen.gt.sm)
     const search = ref('')
     const mailingList = ref('')
     const toggleDrawer = () => {
       leftDrawerOpen.value  = !leftDrawerOpen.value
-      console.log(leftDrawerOpen.value)
     }
 
     return {
