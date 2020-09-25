@@ -31,6 +31,27 @@ const routes: RouteConfig[] = [
       { path: '', component: () => import('../pages/About/index.vue') }
     ]
   },
+  {
+    path: '/login',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Authentication/Login.vue') }
+    ]
+  },
+  {
+    path: '/start',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Authentication/Signup.vue') }
+    ]
+  },
+  {
+    path: '/forgot-password',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Authentication/ForgotPassword.vue') }
+    ]
+  },
   /*
   {
     path: '/explore',
