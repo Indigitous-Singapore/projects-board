@@ -12,7 +12,11 @@
             @click="toggleDrawer()"
             class="lt-md"
           />
-          <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md" />
+          <router-link
+            to="/"
+            >
+            <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md" />
+          </router-link>
           <div class="gt-sm row">
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
@@ -33,8 +37,8 @@
         </q-toolbar>
         <q-separator vertical inset />
         <q-toolbar class="col-auto q-mx-md gt-sm">
-          <q-btn color="accent" bg-color="white" outline rounded padding="xs lg" label="START A PROJECT" class="accent" />
-          <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="LOG IN" />
+          <q-btn color="accent" to="/start" bg-color="white" outline rounded padding="xs lg" label="START A PROJECT" class="accent" />
+          <q-btn color="transparent" to="/login" text-color="black" flat stretch padding="lg lg" label="LOG IN" />
         </q-toolbar>
       </div>
     </q-header>
