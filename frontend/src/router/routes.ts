@@ -52,6 +52,15 @@ const routes: RouteConfig[] = [
       { path: '', component: () => import('pages/Authentication/ForgotPassword.vue') }
     ]
   },
+
+
+  {
+    path: '/dashboard',
+    component: () => import('layouts/DashboardLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Authentication/ForgotPassword.vue') }
+    ]
+  },
   /*
   {
     path: '/explore',

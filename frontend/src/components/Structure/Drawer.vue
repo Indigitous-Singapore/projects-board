@@ -6,30 +6,8 @@
   >
     <q-list>
       <q-item>
-        <q-item-section class="col justify-center">
+        <q-item-section class="col justify-center q-py-lg">
           <img src="../../assets/placeholder.com-logo4.png" style="width:150px" class="self-center" />
-        </q-item-section>
-      </q-item>
-      <q-item to="/project" exact>
-        <q-item-section>
-          <q-btn color="accent" bg-color="white" outline rounded label="START A PROJECT" class="accent" />
-        </q-item-section>
-      </q-item>
-      <!-- No Login for now
-      <q-item to="/login" exact>
-        <q-item-section>
-          <q-btn color="transparent" text-color="black" flat label="LOG IN" />
-        </q-item-section>
-      </q-item> --> 
-      <q-separator />
-      <q-item to="/about" exact>
-        <q-item-section>
-          ABOUT
-        </q-item-section>
-      </q-item>
-      <q-item to="/explore" exact>
-        <q-item-section>
-          EXPLORE
         </q-item-section>
       </q-item>
       <q-item>
@@ -50,15 +28,36 @@
           </q-input>
         </q-item-section>
       </q-item>
+      
+      <q-separator spaced="md"/>
+
+      <q-item to="/about" exact>
+        <q-item-section>
+          About
+        </q-item-section>
+      </q-item>
+      <q-item to="/explore" exact>
+        <q-item-section>
+          Explore
+        </q-item-section>
+      </q-item>
+
+      <q-separator spaced="md"/>
+      
+      <DrawerBottom />
     </q-list>
   </q-drawer>
 </template>
 
 <script>
 import { defineComponent, computed, ref } from '@vue/composition-api'
+import DrawerBottom from './DrawerBottom'
 
 export default defineComponent({
   name: 'ComponentDrawer',
+  components: {
+    DrawerBottom
+  },
   props: {
     leftDrawerOpen: {
       type: Boolean,

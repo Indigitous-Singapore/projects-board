@@ -1,10 +1,11 @@
 <template>
 <q-form
     @submit="signup"
-    class="q-gutter-md login-form"
+    class="login-form"
   >
     <q-input
       filled
+      class="q-mb-sm"
       type="text"
       v-model="state.name"
       label="Name *"
@@ -13,6 +14,7 @@
 
     <q-input
       filled
+      class="q-mb-sm"
       type="email"
       v-model="state.email"
       label="Email *"
@@ -21,6 +23,7 @@
 
     <q-input
       filled
+      class="q-mb-sm"
       type="password"
       v-model="state.password"
       label="Password *"
@@ -29,6 +32,7 @@
 
     <q-input
       filled
+      class="q-mb-sm"
       type="password"
       v-model="state.passwordconfirm"
       label="Confirm Password *"
@@ -59,6 +63,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .login-form {
-  min-width: 360px;
+  max-width: 360px;
+  width: 100%;
 }
 </style>
