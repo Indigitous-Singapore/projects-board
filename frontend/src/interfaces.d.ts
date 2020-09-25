@@ -1,3 +1,15 @@
+export interface InterfaceStateAuthenticationLogin {
+  email: string|null;
+  password: string|null;
+}
+
+export interface InterfaceStateAuthenticationSignup {
+  name: string|null;
+  email: string|null;
+  password: string|null;
+  passwordconfirm: string|null;
+}
+
 export interface InterfaceStateProjects {
   projects: InterfaceProject[]
 }
