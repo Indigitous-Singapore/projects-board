@@ -28,12 +28,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { useAuthenticationLogin } from '../../services/authenticationLogin'
+import { useAuthentication } from '../../services/authentication'
 
 export default defineComponent({
   name: 'AuthenticationLoginForm',
   setup () {
-    const { state, login } = useAuthenticationLogin()
+    const { state, login } = useAuthentication()
 
     return {
       login,
