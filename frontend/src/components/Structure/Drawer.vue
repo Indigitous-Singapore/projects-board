@@ -51,12 +51,12 @@
 
 <script>
 import { defineComponent, computed, ref } from '@vue/composition-api'
-import DrawerBottom from './DrawerBottom'
+import DrawerBottom from './DrawerBottom.vue'
 
 export default defineComponent({
   name: 'ComponentDrawer',
   components: {
-    DrawerBottom
+    DrawerBottom,
   },
   props: {
     leftDrawerOpen: {
