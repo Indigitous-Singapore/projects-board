@@ -2,22 +2,22 @@ import { reactive } from '@vue/composition-api'
 
 import { InterfaceStateAuthenticationLogin } from 'src/interfaces'
 
-const defaultState: InterfaceStateAuthenticationLogin = {
+const defaultAuthenticationLoginState: InterfaceStateAuthenticationLogin = {
   email: null,
   password: null,
 }
 
 const state = reactive({
-  ...defaultState
+  ...defaultAuthenticationLoginState
 })
 
-const useAuthenticationLogin = () => {
+const useAuthentication = () => {
   const login = () => {
     console.log(state.email)
     console.log(state.password)
 
-    state.email = defaultState.email
-    state.password = defaultState.password
+    state.email = defaultAuthenticationLoginState.email
+    state.password = defaultAuthenticationLoginState.password
   }
 
   return {
@@ -27,5 +27,5 @@ const useAuthenticationLogin = () => {
 }
 
 export {
-  useAuthenticationLogin
+  useAuthentication
 }

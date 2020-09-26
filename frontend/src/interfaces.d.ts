@@ -3,13 +3,16 @@ export interface InterfaceStateAuthenticationLogin {
   password: string|null;
 }
 
-export interface InterfaceStateAuthenticationSignup {
+export interface InterfaceStateSignup {
   name: string|null;
   email: string|null;
   password: string|null;
   passwordconfirm: string|null;
 }
 
+/**
+ * Projects
+ */
 export interface InterfaceStateProjects {
   projects: InterfaceProject[]
 }
@@ -62,4 +65,16 @@ export interface InterfaceProject {
   //  Filters
   fields?: InterfaceProjectField[] | null;
   causes?: InterfaceProjectCause[] | null;
+}
+
+/**
+ * User
+ */
+export interface InterfaceUser {
+  id: number|null;
+  token: string|null;
+  firstName: string|null;
+  lastName: string|null;
+  email: string|null;
+  displayPictureUrl?: string|null;
 }

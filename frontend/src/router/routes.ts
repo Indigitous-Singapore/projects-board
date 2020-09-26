@@ -58,7 +58,7 @@ const routes: RouteConfig[] = [
     path: '/dashboard',
     component: () => import('layouts/DashboardLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Authentication/ForgotPassword.vue') }
+      { path: '', component: () => import('pages/Dashboard/Home.vue') }
     ]
   },
   /*
