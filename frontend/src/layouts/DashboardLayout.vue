@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fff">
+  <q-layout view="hHh Lpr lff">
     <q-header bordered class="bg-white text-black xl-hide lg-hide md-hide sm-hide">
       <div class="row">
         <q-toolbar class="col-grow">
@@ -20,20 +20,27 @@
         </q-toolbar>
       </div>
     </q-header>
+    
     <ComponentDrawer
       :leftDrawerOpen="leftDrawerOpen"
       />
 
     <q-page-container>
+      <q-banner inline-actions class="bg-primary text-white">
+        We are currently in <b>beta</b>! We apologise if you experience any bugs.
+        <template v-slot:action>
+          <a href="mailto:developer@indigitous.sg" target="_blank" class="text-white" style="text-decoration:none">
+            Contact Us
+          </a>
+        </template>
+      </q-banner>
       <router-view />
     </q-page-container>
-
-    <Footer />
   </q-layout>
 </template>
 
 <script lang="ts">
-import ComponentDrawer from 'components/Structure/Drawer.vue'
+import ComponentDrawer from 'components/Structure/DashboardDrawer/Drawer.vue'
 import NavbarRight from 'components/Structure/NavbarRight.vue'
 import Footer from 'components/Structure/Footer.vue'
 import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'

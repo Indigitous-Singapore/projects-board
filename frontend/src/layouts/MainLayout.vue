@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import ComponentDrawer from 'components/Structure/Drawer.vue'
+import ComponentDrawer from 'components/Structure/MainDrawer/Drawer.vue'
 import NavbarRight from 'components/Structure/NavbarRight.vue'
 import Footer from 'components/Structure/Footer.vue'
 import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'
