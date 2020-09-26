@@ -53,6 +53,7 @@ export default defineComponent({
   setup () {
     const { state, signup } = useSignup()
 
+
     return {
       signup,
       state
