@@ -46,13 +46,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { useSignup } from '../../services/Signup'
+import { useSignup } from '../../services/signup'
 
 export default defineComponent({
   name: 'AuthenticationSignupForm',
   setup () {
     const { state, signup } = useSignup()
-
     return {
       signup,
       state
