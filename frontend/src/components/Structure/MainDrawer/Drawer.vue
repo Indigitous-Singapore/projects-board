@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import DrawerSearch from './DrawerSearch.vue'
 import DrawerBottom from './DrawerBottom.vue'
 

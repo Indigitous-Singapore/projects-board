@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import ContentPosition from './ContentPosition.vue'
 
 export default defineComponent({

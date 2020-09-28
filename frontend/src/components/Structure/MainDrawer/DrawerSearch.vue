@@ -20,7 +20,7 @@ import { defineComponent, ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'DrawerSearch',
-  setup(props) {
+  setup() {
     const search = ref('')
     return {
       search

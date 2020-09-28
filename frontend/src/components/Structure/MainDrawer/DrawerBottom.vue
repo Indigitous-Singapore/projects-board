@@ -30,7 +30,7 @@ import { useUser } from '../../../services/user'
 
 export default defineComponent({
   name: 'DrawerBottom',
-  setup (_, ctx) {
+  setup () {
     const authenticated = ref(false)
     const { isAuthenticated, user } = useUser()
 

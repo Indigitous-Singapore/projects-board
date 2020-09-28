@@ -48,7 +48,7 @@
       <router-view />
     </q-page-container>
 
-    <Footer />
+    <Footer class="gt-sm" />
   </q-layout>
 </template>
 

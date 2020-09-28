@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'ProjectContentPosition',
@@ -54,7 +54,7 @@ export default defineComponent({
       type: Object
     }
   },
-  setup (props, ctx) {
+  setup () {
     const expanded = ref(false)
     const toggleExpand = (evt: { preventDefault: () => void; }) => {
       evt.preventDefault()

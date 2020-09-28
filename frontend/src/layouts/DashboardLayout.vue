@@ -54,7 +54,7 @@ export default defineComponent({
     NavbarRight,
     Footer
   },
-  setup (_, ctx) {
+  setup () {
     const leftDrawerOpen = ref(Screen.gt.sm)
     const search = ref('')
     const mailingList = ref('')
