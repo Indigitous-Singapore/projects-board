@@ -38,7 +38,7 @@ export default defineComponent({
 
     // Watch effect
     watch(
-      () => user.token,
+      () => user.jwt,
       () => {
         authenticated.value = isAuthenticated()
       }

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 
 import { useUser } from '../../../services/user'
 
@@ -52,8 +52,10 @@ export default defineComponent({
       default: false
     }
   },
-  setup (props, ctx) {
+  setup () {
     const { user } = useUser()
+
+    console.log(user)
 
     return {
       user
