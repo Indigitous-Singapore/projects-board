@@ -3,8 +3,14 @@ export interface InterfaceStateAuthenticationLogin {
   password: string|null;
 }
 
+export interface InterfaceLoginResponse {
+  jwt: string|null;
+  user: InterfaceUser;
+}
+
 export interface InterfaceStateSignup {
-  name: string|null;
+  firstName: string|null;
+  lastName: string|null;
   email: string|null;
   password: string|null;
   passwordconfirm: string|null;
@@ -72,7 +78,7 @@ export interface InterfaceProject {
  */
 export interface InterfaceUser {
   id: number|null;
-  token: string|null;
+  jwt?: string|null;
   firstName: string|null;
   lastName: string|null;
   email: string|null;

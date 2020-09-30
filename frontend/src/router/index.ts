@@ -7,11 +7,16 @@ import routes from './routes';
  * If not building with SSR mode, you can
  * directly export the Router instantiation
  */
+let Router: VueRouter = new VueRouter()
+
+export {
+  Router
+}
 
 export default route<StoreInterface>(function ({ Vue }) {
   Vue.use(VueRouter);
 
-  const Router = new VueRouter({
+  Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
 
