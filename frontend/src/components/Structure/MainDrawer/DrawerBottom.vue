@@ -26,13 +26,14 @@
 
 <script>
 import { defineComponent, ref, watch } from '@vue/composition-api'
+import { isAuthenticated } from '../../../services/authentication'
 import { useUser } from '../../../services/user'
 
 export default defineComponent({
   name: 'DrawerBottom',
   setup (_, ctx) {
     const authenticated = ref(false)
-    const { isAuthenticated, user } = useUser()
+    const { user } = useUser()
 
     authenticated.value = isAuthenticated()
 

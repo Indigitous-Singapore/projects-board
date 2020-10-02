@@ -15,13 +15,14 @@
 
 <script>
 import { defineComponent, ref, watch } from '@vue/composition-api'
+import { isAuthenticated } from '../../services/authentication'
 import { useUser } from '../../services/user'
 
 export default defineComponent({
   name: 'NavbarRight',
   setup (_, ctx) {
     const authenticated = ref(false)
-    const { isAuthenticated, user } = useUser()
+    const { user } = useUser()
 
     authenticated.value = isAuthenticated()
 
@@ -29,7 +30,6 @@ export default defineComponent({
     watch(
       () => user.jwt,
       () => {
-        console.log('changed')
         authenticated.value = isAuthenticated()
       }
     )

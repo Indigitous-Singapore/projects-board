@@ -8,6 +8,19 @@ export interface InterfaceLoginResponse {
   user: InterfaceUser;
 }
 
+export interface InterfaceLoginError {
+  statusCode: number;
+  error: string;
+  data: InterfaceLoginErrorData[]
+}
+export interface InterfaceLoginErrorData {
+  messages: InterfaceLoginErrorDataMessage[]
+}
+export interface InterfaceLoginErrorDataMessage {
+  message: string;
+  id: string;
+}
+
 export interface InterfaceStateSignup {
   firstName: string|null;
   lastName: string|null;
