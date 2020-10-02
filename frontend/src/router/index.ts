@@ -1,6 +1,8 @@
 import { route } from 'quasar/wrappers';
 import VueRouter from 'vue-router';
 import { StoreInterface } from '../store';
+import fetchedProfile from './guards/fetchedProfile';
+import isAuthenticated from './guards/isAuthenticated';
 import routes from './routes';
 
 /*
@@ -26,6 +28,9 @@ export default route<StoreInterface>(function ({ Vue }) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   });
+
+  Router.beforeEach(isAuthenticated)
+  Router.beforeEach(fetchedProfile)
 
   return Router;
 })

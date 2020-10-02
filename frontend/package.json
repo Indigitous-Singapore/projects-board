@@ -11,6 +11,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@capacitor/core": "^2.4.2",
     "@quasar/extras": "^1.0.0",
     "@types/hapi__joi": "^17.1.6",
     "@types/joi": "^14.3.4",
