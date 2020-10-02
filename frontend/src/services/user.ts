@@ -1,41 +1,60 @@
 import { reactive } from '@vue/composition-api'
+import axios from 'axios'
 
 import { InterfaceLoginResponse, InterfaceUser } from 'src/interfaces'
-
-const user: InterfaceUser = reactive({
-  id: null,
-  jwt: null,
-  firstName: null,
-  lastName: null,
-  email: null,
-  displayPictureUrl: null,
-})
+import { storeAuthenticationToken, getAuthenticationToken } from './authentication'
 
 const useUser = () => {
-  /**
-   * logs in a user
-   */
-  const login = (loginResponse: InterfaceLoginResponse) => {
-    user.id = loginResponse.user.id
-    user.jwt = loginResponse.jwt
-    user.firstName = loginResponse.user.firstName
-    user.lastName = loginResponse.user.lastName
-    user.email = loginResponse.user.email
+  const user: InterfaceUser = reactive({
+    id: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+    displayPictureUrl: null,
+  })
+
+  const populateUser = (loggedInUser: InterfaceUser) => {
+    user.id = loggedInUser.id
+    user.firstName = loggedInUser.firstName
+    user.lastName = loggedInUser.lastName
+    user.email = loggedInUser.email
     user.displayPictureUrl = "https://api.adorable.io/avatars/500/" + String(user.email) + ".png"
   }
 
   /**
-   * Checks if the user is authenticated
-   * 
-   * @todo add more checks to verify the token's expiry and validity
+   * logs in a user
    */
-  const isAuthenticated = () => {
-    return user.jwt !== null
+  const login = async (loginResponse: InterfaceLoginResponse) => {
+    if (loginResponse.jwt !== null) {
+      await storeAuthenticationToken(loginResponse.jwt)
+    }
+    populateUser(loginResponse.user)
+  }
+
+  /**
+   * Fetch profile
+   */
+  const getProfile = async (): Promise<void> => {
+    const token: string|null = await getAuthenticationToken()
+
+    if (token) {
+      const response = await axios
+        .get(String(process.env.apiUrl) + 'users/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+
+        console.log(response.data )
+        populateUser(response.data)
+    }
+
+    return
   }
 
   return {
     login,
-    isAuthenticated,
+    getProfile,
     user
   }
 }

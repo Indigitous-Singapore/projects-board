@@ -1,6 +1,15 @@
 <template>
+<div
+  class="flex justify-center"
+  v-if="loading">
+  <q-spinner-tail
+    color="accent"
+    size="5em"
+  />
+</div>
 <q-form
     @submit="login"
+    v-else
     class="login-form"
   >
     <q-input
@@ -9,8 +18,14 @@
       type="email"
       v-model="state.email"
       label="Email *"
+      bottom-slots
+      :error="errors.email !== null"
       required
-    />
+    >
+      <template v-slot:error>
+        {{ errors.email }}
+      </template>
+    </q-input>
 
     <q-input
       filled
@@ -18,8 +33,14 @@
       type="password"
       v-model="state.password"
       label="Password *"
+      bottom-slots
+      :error="errors.password !== null"
       required
-      />
+    >
+      <template v-slot:error>
+        {{ errors.password }}
+      </template>
+    </q-input>
   <div>
     <q-btn unelevated class="full-width q-py-xs" label="Log In" type="submit" color="accent"/>
   </div>
@@ -33,9 +54,11 @@ import { useAuthentication } from '../../services/authentication'
 export default defineComponent({
   name: 'AuthenticationLoginForm',
   setup () {
-    const { state, login } = useAuthentication()
+    const { errors, loading, state, login } = useAuthentication()
 
     return {
+      errors,
+      loading,
       login,
       state
     }

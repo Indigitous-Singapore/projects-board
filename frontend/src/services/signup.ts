@@ -64,9 +64,9 @@ const useSignup = () => {
   /**
    * Saves the user profile via the service
    */
-  const saveUserProfile = (user: InterfaceLoginResponse): void => {
+  const saveUserProfile = async (user: InterfaceLoginResponse): Promise<void> => {
     const { login } = useUser()
-    login(user)
+    await login(user)
   }
 
   const redirectToDashboard = (): void => {
@@ -95,8 +95,7 @@ const useSignup = () => {
       })
       .then((response: AxiosResponse) => {
         reset()
-        console.log('User profile', response.data)
-        saveUserProfile(response.data)
+        void saveUserProfile(response.data)
         redirectToDashboard()
       })
       .catch((error: AxiosError) => {

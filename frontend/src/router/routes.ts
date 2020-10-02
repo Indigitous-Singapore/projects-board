@@ -14,42 +14,42 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('../pages/Home.vue') }
+      { path: '', name: 'home', component: () => import('../pages/Home.vue') }
     ]
   },
   {
     path: '/projects',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: ':projectId', component: () => import('../pages/Projects/Single.vue') }
+      { path: ':projectId', name: 'project', component: () => import('../pages/Projects/Single.vue') }
     ]
   },
   {
     path: '/about',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('../pages/About/index.vue') }
+      { path: '', name: 'about', component: () => import('../pages/About/index.vue') }
     ]
   },
   {
     path: '/login',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Authentication/Login.vue') }
+      { path: '', name: 'login', component: () => import('pages/Authentication/Login.vue') }
     ]
   },
   {
     path: '/start',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Authentication/Signup.vue') }
+      { path: '', name:'start', component: () => import('pages/Authentication/Signup.vue') }
     ]
   },
   {
     path: '/forgot-password',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Authentication/ForgotPassword.vue') }
+      { path: '', name: 'forgot-password', component: () => import('pages/Authentication/ForgotPassword.vue') }
     ]
   },
 
@@ -58,7 +58,7 @@ const routes: RouteConfig[] = [
     path: '/dashboard',
     component: () => import('layouts/DashboardLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Dashboard/Home.vue') }
+      { path: '', name:'dashboard', meta: {private: true}, component: () => import('pages/Dashboard/Home.vue') }
     ]
   },
   /*
@@ -89,6 +89,7 @@ const routes: RouteConfig[] = [
   // Always leave this as last one,
   // but you can also remove it
   {
+    name: 'error404',
     path: '*',
     component: () => import('../pages/Error404.vue')
   }
