@@ -1,8 +1,12 @@
 import { reactive } from '@vue/composition-api'
 import axios from 'axios'
+import { Plugins, StoragePlugin } from '@capacitor/core'
 
 import { InterfaceLoginResponse, InterfaceUser } from 'src/interfaces'
 import { storeAuthenticationToken, getAuthenticationToken } from './authentication'
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+const Storage: StoragePlugin = Plugins.Storage
 
 const useUser = () => {
   const user: InterfaceUser = reactive({
@@ -32,6 +36,19 @@ const useUser = () => {
   }
 
   /**
+   * logs out a user
+   */
+  const logout = async () => {
+    await Storage.clear()
+    user.id = null
+    user.firstName = null
+    user.lastName = null
+    user.email = null
+    user.displayPictureUrl = null
+  }
+
+
+  /**
    * Fetch profile
    */
   const getProfile = async (): Promise<void> => {
@@ -44,8 +61,6 @@ const useUser = () => {
             Authorization: `Bearer ${token}`,
           }
         })
-
-        console.log(response.data )
         populateUser(response.data)
     }
 
@@ -54,6 +69,7 @@ const useUser = () => {
 
   return {
     login,
+    logout,
     getProfile,
     user
   }
