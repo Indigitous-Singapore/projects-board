@@ -30,7 +30,7 @@
       <div class="absolute-bottom bg-transparent">
         <img class="logo" src="../../../assets/placeholder.com-logo4.png">
         <q-avatar size="56px" class="q-mb-sm">
-          <img :src="user.displayPictureUrl">
+          <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
         </q-avatar>
         <div class="text-weight-bold text-dark">{{ user.firstName }}&nbsp;{{ user.lastName }}</div>
         <div class="text-dark"><small>{{ user.email }}</small></div>
@@ -54,12 +54,7 @@ export default defineComponent({
   },
   setup () {
     const { user } = useUser()
-
-    console.log(user)
-
-    return {
-      user
-    }
+    return { user }
   }
 })
 </script>
