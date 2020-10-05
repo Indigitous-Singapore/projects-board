@@ -39,6 +39,13 @@ const routes: RouteConfig[] = [
     ]
   },
   {
+    path: '/logout',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: 'logout', component: () => import('pages/Authentication/Logout.vue') }
+    ]
+  },
+  {
     path: '/start',
     component: () => import('layouts/MainLayout.vue'),
     children: [
