@@ -16,14 +16,14 @@ export default defineComponent({
     onMounted(async () => {
       const { logout } = useUser()
 
-      setTimeout(async () => {
-        await logout()
-        ctx.root.$router.push('/')
-      }, 1500)
+      await logout()
       
+      setTimeout(() => {
+        void ctx.root.$router.push('/')
+      }, 1000)
     })
 
     return {}
   }
-});
+})
 </script>

@@ -17,7 +17,7 @@ export default defineComponent({
     onBeforeMount(async () => {
       const authenticated = await isAuthenticated()
       if (authenticated) {
-        getProfile()
+        void getProfile()
       }
     })
   }

@@ -25,16 +25,19 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from '@vue/composition-api'
+import { defineComponent, onBeforeMount, ref, watch } from '@vue/composition-api'
 import { useUser } from '../../../services/user'
+import { isAuthenticated } from '../../../services/authentication'
 
 export default defineComponent({
   name: 'DrawerBottom',
   setup (_, ctx) {
     const authenticated = ref(false)
-    const { isAuthenticated, user } = useUser()
+    const { user } = useUser()
 
-    authenticated.value = isAuthenticated()
+    onBeforeMount(async () => {
+      authenticated.value = await isAuthenticated()
+    })
 
     // Watch effect
     watch(
