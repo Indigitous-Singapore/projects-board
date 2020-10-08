@@ -1,8 +1,8 @@
 {
   "name": "ndgt-projects-board-frontend",
   "version": "0.0.1",
-  "description": "Projects Board",
-  "productName": "Indigitous SG Projects",
+  "description": "Discover and collaborate with christian digital projects from communities all over Singapore",
+  "productName": "Launchpad by Indigitous",
   "author": "indigitious<developer@indigitous.sg>",
   "private": true,
   "scripts": {

@@ -9,7 +9,8 @@
       </div>
       <div class="column col-12 col-md-6 justify-center">
         <q-img
-          src="../../assets/build.jpg"
+          class="image"
+          src="../../assets/build.png"
           />
       </div>
     </div>
@@ -94,7 +95,8 @@
     <div class="row q-py-lg q-col-gutter-xl">
       <div class="column col-12 col-md-6">
         <q-img
-          src="../../assets/launch.jpg"
+          class="image"
+          src="../../assets/launch.png"
           />
       </div>
       <div class="column col-12 col-md-6 justify-center">
@@ -127,5 +129,10 @@ export default defineComponent({
 <style scoped lang="scss">
 h1 {
   font-weight: 700;
+}
+.image {
+  max-width: 100%;
+  width: 360px;
+  margin: 0 auto;
 }
 </style>
