@@ -127,9 +127,9 @@ module.exports = configure(function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Indigitous SG Projects',
-        short_name: 'Indigitous SG Projects',
-        description: 'Projects Board',
+        name: 'Launchpad By Indigitous',
+        short_name: 'Launchpad',
+        description: 'Discover and collaborate with christian digital projects from communities all over Singapore',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

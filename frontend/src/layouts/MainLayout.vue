@@ -15,7 +15,7 @@
           <router-link
             to="/"
             >
-            <img src="../assets/placeholder.com-logo4.png" style="width:150px" class="q-mr-lg q-ml-md" />
+            <img src="../assets/logo.png" style="width:150px" class="q-mr-lg q-ml-md" />
           </router-link>
           <div class="gt-sm row">
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
