@@ -8,7 +8,7 @@
       <q-list>
         <q-item>
           <q-item-section class="col justify-center q-py-lg">
-            <img src="../../../assets/placeholder.com-logo4.png" style="width:150px" class="self-center" />
+            <img src="../../../assets/logo.png" style="width:150px" class="self-center" />
           </q-item-section>
         </q-item>
         <q-item>

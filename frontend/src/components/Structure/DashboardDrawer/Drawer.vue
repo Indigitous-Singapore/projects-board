@@ -28,7 +28,7 @@
     </q-scroll-area>
     <q-img class="absolute-top drawer-profile" src="https://www.toptal.com/designers/subtlepatterns/patterns/triangle-mosaic.png" >
       <div class="absolute-bottom bg-transparent">
-        <img class="logo" src="../../../assets/placeholder.com-logo4.png">
+        <img class="logo" src="../../../assets/logo.png">
         <q-avatar size="56px" class="q-mb-sm">
           <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
         </q-avatar>
