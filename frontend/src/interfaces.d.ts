@@ -60,11 +60,13 @@ export interface InterfaceProject {
   user: InterfaceProjectUser;
 
   //  Open Positions
-  openPositions: InterfaceProjectPosition[],
+  openPositions: InterfaceProjectPosition[];
 
   //  Filters
-  fields?: InterfaceProjectField[] | null;
-  causes?: InterfaceProjectCause[] | null;
+  // fields?: InterfaceProjectField[] | null;
+  // causes?: InterfaceProjectCause[] | null;
+  fields?: string[] | null;
+  causes?: string | null;
 }
 
 /**
