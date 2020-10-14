@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Project",
+  "info": {
+    "name": "Project"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "private": false,
+      "required": true,
+      "unique": true,
+      "maxLength": 36,
+      "minLength": 8
+    },
+    "caption": {
+      "type": "text",
+      "required": true,
+      "maxLength": 48
+    },
+    "displayPictureUrl": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "aboutOurStory": {
+      "type": "richtext",
+      "required": true
+    },
+    "aboutWhatWeDo": {
+      "type": "richtext",
+      "required": true
+    },
+    "aboutCommitment": {
+      "type": "richtext",
+      "required": true
+    },
+    "faqs": {
+      "type": "richtext"
+    },
+    "causes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "causes.causes"
+    },
+    "fields": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fields.fields"
+    },
+    "user": {
+      "unique": true,
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "projects"
+    },
+    "openPositions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "positions.open-positions"
+    }
+  }
+}
