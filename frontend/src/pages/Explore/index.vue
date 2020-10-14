@@ -1,50 +1,37 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="column">
+    <explore-banner />
+    <div class="row full-height">
+      <div class="col-3">
+      </div>
+      <div class="col-9">
+        <explore-content />
+      </div>
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from '@vue/composition-api'
+import ExploreBanner from '../../components/Explore/ExploreBanner.vue'
+import ExploreContent from '../../components/Explore/ExploreContent.vue'
+import ExploreFilters from '../../components/Explore/ExploreFilters.vue'
+import ExploreSearch from '../../components/Explore/ExploreSearch.vue'
 
-import ExampleComponent from 'components/CompositionComponent.vue';
-import { Todo, Meta } from 'components/models';
 
-export default Vue.extend({
-  name: 'PageExploreIndex',
-  components: { ExampleComponent },
-  data() {
-    const todos: Todo[] = [
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ];
-    const meta: Meta = {
-      totalCount: 1200
-    };
-    return { todos, meta };
+export default defineComponent({
+  name: 'ExploreHeader',
+  components: {
+    ExploreBanner,
+    ExploreContent,
+    ExploreFilters,
+    ExploreSearch
+  },
+  setup () {
+    return {
+    }
   }
-});
+})
 </script>
+<style lang="scss" scoped>
+</style>

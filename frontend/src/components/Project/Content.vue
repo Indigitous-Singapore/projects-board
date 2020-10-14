@@ -111,7 +111,7 @@ export default defineComponent({
       }
     }
   },
-  setup (props, ctx) {
+  setup () {
     const data = reactive({
       tab: 'project',
       innerTab: 'innerOurStory',
