@@ -44,7 +44,7 @@ import { useUser } from '../../services/user'
 
 export default defineComponent({
   name: 'NavbarRight',
-  setup (_, ctx) {
+  setup () {
     const authenticated = ref(false)
     const { user } = useUser()
 

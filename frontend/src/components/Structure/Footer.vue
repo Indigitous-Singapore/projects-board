@@ -61,9 +61,18 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from '@vue/composition-api'
-
+import { defineComponent, ref } from '@vue/composition-api'
+import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'
 export default defineComponent({
   name: 'Footer',
+  setup () {
+    const mailingList = ref('')
+    return {
+      mdiInstagram,
+      mdiFacebook,
+      mdiTwitter,
+      mailingList
+    }
+  }
 })
 </script>

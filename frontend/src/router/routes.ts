@@ -68,7 +68,6 @@ const routes: RouteConfig[] = [
       { path: '', name:'dashboard', meta: {private: true}, component: () => import('pages/Dashboard/Home.vue') }
     ]
   },
-  /*
   {
     path: '/explore',
     component: () => import('layouts/MainLayout.vue'),
@@ -76,6 +75,7 @@ const routes: RouteConfig[] = [
       { path: '', component: () => import('pages/Explore/index.vue') }
     ]
   },
+/*
   {
     path: '/users',
     component: () => import('layouts/MainLayout.vue'),
