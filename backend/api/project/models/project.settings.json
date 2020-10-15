@@ -46,16 +46,6 @@
     "faqs": {
       "type": "richtext"
     },
-    "causes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "causes.causes"
-    },
-    "fields": {
-      "type": "component",
-      "repeatable": true,
-      "component": "fields.fields"
-    },
     "user": {
       "unique": true,
       "plugin": "users-permissions",
@@ -66,6 +56,23 @@
       "type": "component",
       "repeatable": true,
       "component": "positions.open-positions"
+    },
+    "fields": {
+      "type": "enumeration",
+      "enum": [
+        "fundraising",
+        "technology",
+        "evangelism",
+        "outreach",
+        "worship"
+      ],
+      "required": true
+    },
+    "causes": {
+      "type": "enumeration",
+      "enum": [
+        "theUnreached"
+      ]
     }
   }
 }
