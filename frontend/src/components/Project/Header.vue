@@ -5,7 +5,7 @@
     <h3 class="text-grey-7 md-hide lg-hide xl-hide">{{ project.caption }}</h3>
     <q-img
       :ratio="16/9"
-      :src="project.displayPictureUrl" 
+      :src="config.apiUrl + project.displayPictureUrl.url" 
       :alt="project.title"
       />
   </div>
@@ -14,9 +14,9 @@
     <h3 class="text-grey-7 xs-hide sm-hide">{{ project.caption }}</h3>
 
     <div class="row items-center">
-      <img
+      <q-img
         class="flex author-displayPicture"
-        :src="project.user.displayPictureUrl"
+        :src="project.user.displayPictureUrl.url"
         :alt="project.user.firstName"
         />
       <h5 class="flex author-name q-mb-none q-pl-md">
@@ -38,11 +38,14 @@
 
     <div class="row q-pt-lg">
       <q-btn
+        type="a"
+        target="_blank"
         class="btn-collaborate"
         rounded
         unelevated
         color="accent"
         label="Collaborate"
+        :href="`mailto:${project.user.email}?subject=I would like to collaborate with you on ${project.title}`"
         />
     </div>
   </div>
@@ -51,6 +54,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import config from '../../config/config'
 
 export default defineComponent({
   name: 'ProjectHeader',
@@ -60,6 +64,11 @@ export default defineComponent({
       default: () => {
         return {}
       }
+    }
+  },
+  setup(props, ctx) {
+    return {
+      config,
     }
   }
 });
