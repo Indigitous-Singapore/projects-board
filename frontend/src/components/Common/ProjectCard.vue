@@ -45,7 +45,7 @@ export default defineComponent({
     category: String,
     title: String,
     description: String,
-    tags: Array
+    tags: String
   },
   components: {
   },

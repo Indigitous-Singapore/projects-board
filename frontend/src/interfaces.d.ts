@@ -16,23 +16,23 @@ export interface InterfaceImageSizes {
   [key: string]: InterfaceImageSize;
 }
 export interface InterfaceImage {
-  id: number;
-  name: string;
-  alternativeText: string|null;
-  caption: string|null;
-  width: number;
-  height: number;
-  formats: InterfaceImageSizes,
-  'hash': string;
-  'ext': string;
-  'mime': string;
-  'size': number;
+  id?: number;
+  name?: string;
+  alternativeText?: string|null;
+  caption?: string|null;
+  width?: number;
+  height?: number;
+  formats?: InterfaceImageSizes,
+  'hash'?: string;
+  'ext'?: string;
+  'mime'?: string;
+  'size'?: number;
   'url': string;
-  'previewUrl': string|null;
-  'provider': string;
-  'provider_metadata': null;
-  'created_at': string;
-  'updated_at': string;
+  'previewUrl'?: string|null;
+  'provider'?: string;
+  'provider_metadata'?: null;
+  'created_at'?: string;
+  'updated_at'?: string;
 }
 
 /**

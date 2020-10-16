@@ -31,12 +31,15 @@
 
       <div class="flex flex-center text-right col-12 col-sm-4 col-md-3 col-lg-2">
         <q-btn
+          type="a"
+          target="_blank"
           unelevated
           color="accent"
           label="connect"
           class="q-px-lg connect"
           size="md"
           rounded
+          :href="`mailto:${project.user.email}?subject=Collaboration on ${project.title} as ${position.title}`"
           />
       </div>
     </div>
@@ -50,6 +53,9 @@ import { defineComponent, ref } from '@vue/composition-api'
 export default defineComponent({
   name: 'ProjectContentPosition',
   props: {
+    project: {
+      type: Object,
+    },
     position: {
       type: Object
     }
