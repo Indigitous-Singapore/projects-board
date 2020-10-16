@@ -3,14 +3,14 @@
   v-if="authenticated"
   class="col-auto q-mx-md gt-sm"
   >
-  <q-btn-dropdown stretch flat>
+  <q-btn-dropdown stretch flat no-caps>
     <template v-slot:label>
       <div class="row items-center no-wrap">
         <q-avatar size="32px">
           <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
         </q-avatar>
-        <div class="text-center">
-          {{ user.firstName }} {{ user.lastName }}
+        <div class="text-center q-ml-sm">
+          Aaron Lee {{ user.firstName }} {{ user.lastName }}
         </div>
       </div>
     </template>

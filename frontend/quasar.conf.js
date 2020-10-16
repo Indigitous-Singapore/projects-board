@@ -54,7 +54,7 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       env: {
-        apiUrl: process.env.apiUrl || 'https://api.launchpad.indigitous.sg/'
+        apiUrl: process.env.apiUrl || 'https://api.launchpad.indigitous.sg'
       },
 
       // transpile: false,
