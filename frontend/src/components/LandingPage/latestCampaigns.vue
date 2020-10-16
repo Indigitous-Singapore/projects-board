@@ -46,8 +46,8 @@ export default defineComponent({
   setup (props, ctx) {
     const { state, getProjects } = useProjects()
 
-    onMounted(() => {
-      getProjects()
+    onMounted(async () => {
+      await getProjects()
     })
 
     return {
