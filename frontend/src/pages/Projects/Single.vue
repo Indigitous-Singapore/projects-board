@@ -36,8 +36,8 @@ export default defineComponent({
       project.value = state.projects.find(project => project.id === Number(ctx.root.$route.params.projectId))
     }
 
-    onBeforeMount(() => {
-      getProjects()
+    onBeforeMount(async () => {
+      await getProjects()
       updateProject()
     })
 
