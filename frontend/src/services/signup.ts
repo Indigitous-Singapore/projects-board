@@ -1,7 +1,7 @@
 import { reactive, ref, Ref } from '@vue/composition-api'
 import axios, { AxiosError, AxiosResponse } from 'axios'
 
-import { InterfaceLoginResponse, InterfaceStateSignup, InterfaceUser } from 'src/interfaces'
+import { InterfaceLoginResponse, InterfaceStateSignup } from 'src/interfaces'
 import { Router } from '../router/index'
 import { useUser } from './user'
 
@@ -43,19 +43,19 @@ const useSignup = () => {
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     if (state.firstName === null) {
-      errors.firstName = "Is required"
+      errors.firstName = 'Is required'
     }
     if (state.lastName === null) {
-      errors.lastName = "Is required"
+      errors.lastName = 'Is required'
     }
     if (!emailRegex.test(String(state.email).toLowerCase())) {
-      errors.email = "Must be an email"
+      errors.email = 'Must be an email'
     }
     if (state.password === null || state.password.length <= 8) {
-      errors.password = "Is required and be longer than 8 characters"
+      errors.password = 'Is required and be longer than 8 characters'
     }
     if (state.passwordconfirm !== state.password) {
-      errors.passwordconfirm = "Must be same as password"
+      errors.passwordconfirm = 'Must be same as password'
     }
 
     return errors.email === null && errors.password === null && errors.passwordconfirm === null

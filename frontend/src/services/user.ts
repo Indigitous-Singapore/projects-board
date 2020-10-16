@@ -15,6 +15,9 @@ const useUser = () => {
     lastName: null,
     email: null,
     displayPictureUrl: null,
+    username: null,
+    created_at: null,
+    updated_at: null,
   })
 
   const populateUser = (loggedInUser: InterfaceUser) => {
@@ -22,7 +25,7 @@ const useUser = () => {
     user.firstName = loggedInUser.firstName
     user.lastName = loggedInUser.lastName
     user.email = loggedInUser.email
-    user.displayPictureUrl = "https://api.adorable.io/avatars/500/" + String(user.email) + ".png"
+    user.displayPictureUrl = 'https://api.adorable.io/avatars/500/' + String(user.email) + '.png'
   }
 
   /**

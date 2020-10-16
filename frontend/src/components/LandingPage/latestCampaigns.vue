@@ -4,40 +4,55 @@
         <h2 class="text-weight-bold">Latest Projects</h2>
     </div>
     <div class="row justify-center q-pa-md-xl q-pa-xs-none">
-      <project-card
-        v-for="(card, index) in projects"
-        :key="index"
-        :img="card.img"
-        :category="card.category"
-        :title="card.title"
-        :description="card.description"
-        :tags="card.tags"
-        style="max-width:270px"
-        class="q-mr-md q-mb-md"
-      />
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 column">
+        <project-card
+          v-for="(project, index) in state.projects"
+          :key="index"
+          :img="config.apiUrl + project.displayPictureUrl.url"
+          :id="project.id"
+          :category="project.fields"
+          :title="project.title"
+          :description="project.caption"
+          :tags="project.causes"
+          class="q-mr-md q-mb-md"
+        />
+      </div>
     </div>
+    <!--
     <div class="row justify-center">
-      <q-btn label="See all" outline rounded size="18px" style="width:178px" class="q-my-xl" />
+      <q-btn
+        label="See all"
+        outline
+        rounded
+        size="18px"
+        class="q-my-xl q-px-xl"
+        />
     </div>
+    -->
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, onMounted, reactive, watch } from '@vue/composition-api'
 import ProjectCard from '../Common/ProjectCard.vue'
+import config from '../../config/config'
+import { useProjects } from '../../services/projects'
+import { InterfaceProject } from 'src/interfaces'
+
 export default defineComponent({
   name: 'LatestCampaignSection',
   components: {
     ProjectCard
   },
-  setup () {
-    const projects = [
-      { img: 'https://via.placeholder.com/271x208.png', category: 'FUNDRAISING', title: 'COVID-19 Relief Efforts for Lower Income Family', description: 'Providing support to lower income families during COVID-19.', tags: ['Families', 'Social Service'] },
-      { img: 'https://via.placeholder.com/271x208.png', category: 'FUNDRAISING', title: 'COVID-19 Relief Efforts for Lower Income Family', description: 'Providing support to lower income families during COVID-19.', tags: ['Families', 'Social Service'] },
-      { img: 'https://via.placeholder.com/271x208.png', category: 'FUNDRAISING', title: 'COVID-19 Relief Efforts for Lower Income Family', description: 'Providing support to lower income families during COVID-19.', tags: ['Families', 'Social Service'] },
-      { img: 'https://via.placeholder.com/271x208.png', category: 'FUNDRAISING', title: 'COVID-19 Relief Efforts for Lower Income Family', description: 'Providing support to lower income families during COVID-19.', tags: ['Families', 'Social Service'] }
-    ]
+  setup (props, ctx) {
+    const { state, getProjects } = useProjects()
+
+    onMounted(() => {
+      getProjects()
+    })
+
     return {
-      projects
+      state,
+      config,
     }
   }
 })
