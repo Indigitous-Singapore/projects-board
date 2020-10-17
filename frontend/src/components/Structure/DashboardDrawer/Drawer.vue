@@ -61,15 +61,15 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .logo {
-  height: 20px;
+  height: 50px;
   margin-bottom: 20px;
   display: block;
 }
 .drawer-scroll-area {
-  height: calc(100% - 190px);
-  margin-top: 190px;
+  height: calc(100% - 220px);
+  margin-top: 220px;
 }
 .drawer-profile {
-  height: 190px;
+  height: 220px;
 }
 </style>
