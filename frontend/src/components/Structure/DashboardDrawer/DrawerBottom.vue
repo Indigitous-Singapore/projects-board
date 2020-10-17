@@ -1,6 +1,6 @@
 <template>
 <q-list
-  v-if="authenticated"
+  v-if="user && user.email !== null"
   >
   <q-item to="/dashboard" exact>
     <q-item-section>
@@ -27,28 +27,13 @@
 <script>
 import { defineComponent, onBeforeMount, ref, watch } from '@vue/composition-api'
 import { useUser } from '../../../services/user'
-import { isAuthenticated } from '../../../services/authentication'
 
 export default defineComponent({
   name: 'DrawerBottom',
   setup () {
-    const authenticated = ref(false)
     const { user } = useUser()
 
-    onBeforeMount(async () => {
-      authenticated.value = await isAuthenticated()
-    })
-
-    // Watch effect
-    watch(
-      () => user.jwt,
-      () => {
-        authenticated.value = isAuthenticated()
-      }
-    )
-
     return {
-      authenticated,
       user
     }
   }
