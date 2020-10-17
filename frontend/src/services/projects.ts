@@ -22,10 +22,22 @@ const packageProject = (project: InterfaceProject) => {
 /**
  * Fetches data. Should ideally be abstracted
  */
-const fetchProjects = async (): Promise<InterfaceProject[]|undefined> => {
+const fetchProjects = async (
+    fields = ['all'],
+    causes = ['all']
+  ): Promise<InterfaceProject[]|undefined> => {
   try {
     if ('apiUrl' in config) {
-      const response: AxiosResponse = await axios.get(`${config.apiUrl}/projects`)
+      //  creates the query
+      let query = ''
+      if (fields.indexOf('all') === -1) {
+        query += 'fields=' + fields.join(',') + '&'
+      }
+      if (causes.indexOf('all') === -1) {
+        query += 'causes=' + causes.join(',') + '&'
+      }
+
+      const response: AxiosResponse = await axios.get(`${config.apiUrl}/projects?${query}`)
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const projects: InterfaceProject[] = response.data
       const packagedProjects: InterfaceProject[] = projects.map((project: InterfaceProject) => {
@@ -63,8 +75,11 @@ const state = reactive({
 
 const useProjects = () => {
 
-  const getProjects = async () => {
-    const projects: InterfaceProject[] | undefined = await fetchProjects()
+  const getProjects = async (
+      fields: string[] = ['all'],
+      causes: string[] = ['all'],
+    ) => {
+    const projects: InterfaceProject[] | undefined = await fetchProjects(fields, causes)
 
     if (projects === undefined) {
       console.error('Projects is undefined')
