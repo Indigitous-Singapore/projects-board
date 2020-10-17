@@ -12,8 +12,8 @@
           src="/assets/collaborate.png"
           />
         <div class="q-mt-xl justify-xs-between" style="max-width:420px">
-          <q-btn color="accent" unelevated label="Explore" rounded size="1em" class="q-mr-md-lg q-mr-sm-sm" style="width:45%" />
-          <q-btn color="grey-4" flat text-color="accent" label="LEARN MORE" rounded size="1em" style="width:45%" />
+          <q-btn color="accent" to="/explore" unelevated label="Explore" rounded size="1em" class="q-mr-md-lg q-mr-sm-sm" style="width:45%" />
+          <q-btn color="grey-4" @click="goTo" flat text-color="accent" label="LEARN MORE" rounded size="1em" style="width:45%" />
         </div>
       </div>
       <div class="xs-hide flex column col-sm-12 col-md-6 q-pa-md">
@@ -28,15 +28,26 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
+import { scroll } from 'quasar'
 
 export default defineComponent({
   name: 'HeaderBannerSection',
   components: {
   },
   setup () {
-    const slide = ref('1')
+    const { getScrollTarget, setScrollPosition } = scroll
+    const goTo = () => {
+      const el: HTMLElement | null = document.getElementById('how-it-works')
+      
+      if (el) {
+        const target = getScrollTarget(el)
+        const offset = el.offsetTop
+        const duration = 150
+        setScrollPosition(target, offset, duration)
+      }
+    }
     return {
-      slide
+      goTo
     }
   }
 })
