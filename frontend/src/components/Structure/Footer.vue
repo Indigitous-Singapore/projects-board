@@ -1,5 +1,5 @@
 <template>
-<q-footer class="bg-grey-9 text-white">
+<q-footer class="bg-grey-9 text-white visible-xs">
   <!--
   <div class="row items-center bg-grey-4 text-grey-9 justify-center" style="height:348px;">
     <div class="col-10">
