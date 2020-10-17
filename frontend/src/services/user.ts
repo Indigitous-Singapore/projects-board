@@ -1,31 +1,37 @@
-import { reactive } from '@vue/composition-api'
+import Vue from 'vue'
+import VueCompositionAPI, { Ref, ref } from '@vue/composition-api'
 import axios from 'axios'
 import { Plugins, StoragePlugin } from '@capacitor/core'
 
 import { InterfaceLoginResponse, InterfaceUser } from 'src/interfaces'
 import { storeAuthenticationToken, getAuthenticationToken } from './authentication'
 
+Vue.use(VueCompositionAPI)
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 const Storage: StoragePlugin = Plugins.Storage
 
+const defaultUser: InterfaceUser = {
+  id: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  displayPictureUrl: null,
+  username: null,
+  created_at: null,
+  updated_at: null,
+}
+
+const user: Ref<InterfaceUser|null> = ref({...defaultUser})
+
 const useUser = () => {
-  const user: InterfaceUser = reactive({
-    id: null,
-    firstName: null,
-    lastName: null,
-    email: null,
-    displayPictureUrl: null,
-    username: null,
-    created_at: null,
-    updated_at: null,
-  })
 
   const populateUser = (loggedInUser: InterfaceUser) => {
-    user.id = loggedInUser.id
-    user.firstName = loggedInUser.firstName
-    user.lastName = loggedInUser.lastName
-    user.email = loggedInUser.email
-    user.displayPictureUrl = 'https://api.adorable.io/avatars/500/' + String(user.email) + '.png'
+    let newUser: InterfaceUser|null = null
+    newUser = {...loggedInUser}
+    newUser.displayPictureUrl = 'https://api.adorable.io/avatars/500/' + String(newUser.email) + '.png'
+
+    user.value = {...newUser}
   }
 
   /**
@@ -43,11 +49,7 @@ const useUser = () => {
    */
   const logout = async () => {
     await Storage.clear()
-    user.id = null
-    user.firstName = null
-    user.lastName = null
-    user.email = null
-    user.displayPictureUrl = null
+    user.value = {...defaultUser}
   }
 
 

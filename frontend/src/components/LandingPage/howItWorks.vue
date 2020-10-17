@@ -1,5 +1,5 @@
 <template>
-  <div class="column full-width justify-center text-center q-pa-md-xl">
+  <div id="how-it-works" class="column full-width justify-center text-center q-pa-md-xl">
     <h2 class="text-weight-bold">How it works</h2>
     <h4 class="self-center" style="max-width:635px;">Discover and collaborate with digital projects from communities all over Singapore</h4>
     <div class="row self-center justify-xs-center q-mt-lg">

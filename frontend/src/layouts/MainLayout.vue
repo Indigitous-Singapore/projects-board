@@ -20,6 +20,7 @@
           <div class="gt-sm row">
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
+            <!--
             <q-input 
               v-model="search"
               clearable
@@ -33,6 +34,7 @@
                 <q-icon name="search" color="grey-9" />
               </template>
             </q-input>
+            -->
           </div>
         </q-toolbar>
         <q-separator vertical inset />

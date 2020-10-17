@@ -5,13 +5,16 @@
     <div class="row self-center justify-between q-mt-lg">
       <q-card flat style="width:150px" v-for="sec in heart" :key="sec.title" class="q-mx-lg">
         <q-card-section class="column text-center">
-          <q-img :src="sec.img" />
-          <h4 class="text-weight-bold text-center">{{sec.title}} </h4>
+          <q-img
+            img-class="text-center"
+            :src="sec.img"
+            />
+          <h5 class="text-weight-bold text-center">{{sec.title}} </h5>
         </q-card-section>
       </q-card>
     </div>
     <div class="row justify-center">
-      <q-btn label="Explore" outline rounded size="18px" style="width:178px" class="q-my-xl" />
+      <q-btn label="Explore" to="/explore" outline rounded size="18px" style="width:178px" class="q-my-xl" />
     </div>
   </div>
 </template>
@@ -24,11 +27,11 @@ export default defineComponent({
   },
   setup () {
     const heart =[
-      { title: 'Poor', img: 'https://via.placeholder.com/96.png' },
-      { title: 'Lost', img: 'https://via.placeholder.com/96.png' },
-      { title: 'Hurting', img: 'https://via.placeholder.com/96.png' },
-      { title: 'Oppressed', img: 'https://via.placeholder.com/96.png' },
-      { title: 'Church', img: 'https://via.placeholder.com/96.png' }
+      { title: 'Fundraising', img: '/assets/fundraising.png' },
+      { title: 'Technology', img: '/assets/technology.png' },
+      { title: 'Evangelism', img: '/assets/evangelism.png' },
+      { title: 'Outreach', img: '/assets/outreach.png' },
+      { title: 'Worship', img: '/assets/worship.png' }
     ]
     return {
       heart
