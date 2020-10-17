@@ -88,7 +88,7 @@ const useAuthentication = () => {
     loading.value = true
 
     axios
-      .post(String(process.env.apiUrl) + 'auth/local', {
+      .post(String(process.env.apiUrl) + '/auth/local', {
         identifier: state.email?.toLowerCase(),
         password: state.password,
       })
