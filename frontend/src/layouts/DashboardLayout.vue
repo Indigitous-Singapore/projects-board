@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr lff">
+  <q-layout view="hHh Lpr lff" style="background-color: rgb(246, 246, 246)">
     <q-header bordered class="bg-white text-black xl-hide lg-hide md-hide sm-hide">
       <div class="row">
         <q-toolbar class="col-grow">
@@ -15,7 +15,7 @@
           <router-link
             to="/"
             >
-            <img src="../assets/logo.png" style="width:150px" class="q-mr-lg q-ml-md"/>
+            <img src="../assets/logo.png" class="q-mr-lg q-ml-md"/>
           </router-link>
         </q-toolbar>
       </div>
