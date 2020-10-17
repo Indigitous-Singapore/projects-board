@@ -1,6 +1,6 @@
 <template>
 <q-toolbar
-  v-if="authenticated"
+  v-if="user && user.email !== null"
   class="col-auto q-mx-md gt-sm"
   >
   <q-btn-dropdown stretch flat no-caps>
@@ -10,7 +10,7 @@
           <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
         </q-avatar>
         <div class="text-center q-ml-sm">
-          Aaron Lee {{ user.firstName }} {{ user.lastName }}
+          {{ user.firstName }} {{ user.lastName }}
         </div>
       </div>
     </template>
@@ -39,29 +39,14 @@
 
 <script>
 import { defineComponent, onMounted, ref, watch } from '@vue/composition-api'
-import { isAuthenticated } from '../../services/authentication'
 import { useUser } from '../../services/user'
 
 export default defineComponent({
   name: 'NavbarRight',
   setup () {
-    const authenticated = ref(false)
     const { user } = useUser()
 
-    onMounted(async () => {
-      authenticated.value = await isAuthenticated()
-    })
-
-    // Watch effect
-    watch(
-      () => user.jwt,
-      async () => {
-        authenticated.value = await isAuthenticated()
-      }
-    )
-
     return {
-      authenticated,
       user
     }
   }
