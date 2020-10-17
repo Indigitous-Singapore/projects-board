@@ -59,7 +59,7 @@ const useUser = () => {
 
     if (token) {
       const response = await axios
-        .get(String(process.env.apiUrl) + 'users/me', {
+        .get(String(process.env.apiUrl) + '/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }

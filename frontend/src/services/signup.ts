@@ -86,7 +86,7 @@ const useSignup = () => {
     loading.value = true
 
     axios
-      .post(String(process.env.apiUrl) + 'auth/local/register', {
+      .post(String(process.env.apiUrl) + '/auth/local/register', {
         firstName: state.firstName,
         lastName: state.lastName,
         username: state.email?.toLowerCase(),
