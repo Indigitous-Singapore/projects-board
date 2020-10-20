@@ -37,6 +37,7 @@
             -->
           </div>
         </q-toolbar>
+        <NavbarAppLauncher />
         <q-separator vertical inset />
         <NavbarRight />
       </div>
@@ -56,6 +57,7 @@
 
 <script lang="ts">
 import ComponentDrawer from 'components/Structure/MainDrawer/Drawer.vue'
+import NavbarAppLauncher from 'components/Structure/NavbarAppLauncher.vue'
 import NavbarRight from 'components/Structure/NavbarRight.vue'
 import Footer from 'components/Structure/Footer.vue'
 import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'
@@ -66,6 +68,7 @@ export default defineComponent({
   components: {
     ComponentDrawer,
     Footer,
+    NavbarAppLauncher,
     NavbarRight,
   },
   setup () {
