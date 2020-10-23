@@ -8,7 +8,7 @@
         <project-card
           v-for="(project, index) in state.projects"
           :key="index"
-          :img="config.apiUrl + project.displayPictureUrl.url"
+          :img="project.displayPictureUrl.url"
           :id="project.id"
           :category="project.fields"
           :title="project.title"
