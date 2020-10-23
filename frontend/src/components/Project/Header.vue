@@ -5,7 +5,7 @@
     <h3 class="text-grey-7 md-hide lg-hide xl-hide">{{ project.caption }}</h3>
     <q-img
       :ratio="16/9"
-      :src="config.apiUrl + project.displayPictureUrl.url" 
+      :src="project.displayPictureUrl.url" 
       :alt="project.title"
       />
   </div>
