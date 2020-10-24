@@ -3,7 +3,7 @@
   <h3 class="q-mb-md">
     Join The Cause
   </h3>
-  <div class="row">
+  <div class="row q-mb-xl">
     <div class="col-12 col-md-8">
       <p>We currently need help in these areas, if you’re interested and passionate to join our cause, get connected with us we’d love to hear from you!</p>
     </div>
@@ -13,8 +13,9 @@
     v-if="Array.isArray(project.openPositions) && project.openPositions.length > 0"
     >
     <ContentPosition
-      v-for="(position, index) in project.openPositions"
-      :key="index"
+      v-for="position in project.openPositions"
+      :key="position.id"
+      :project="project"
       :position="position"
       />
   </div>

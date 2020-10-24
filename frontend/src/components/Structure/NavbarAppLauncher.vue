@@ -64,13 +64,13 @@ export default defineComponent({
         "image": "https://guides.indigitous.sg/img/grape/person-exiting-app.png",
         "title": "Guides",
         "description": "Resources and tools to help digitalise your Kingdom work",
-        "href": "https://ndgt.sg"
+        "href": "https://guides.indigitous.sg"
       },
       {
         "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
         "title": "Open Source",
         "description": "Check out our open source projects",
-        "href": "github.com/indigitous-Singapore"
+        "href": "https://github.com/indigitous-Singapore"
       },
       {
         "image": "https://indigitous.sg/wp-content/uploads/2019/09/indigitous.icon_.jpeg",

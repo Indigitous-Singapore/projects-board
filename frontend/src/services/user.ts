@@ -5,6 +5,7 @@ import { Plugins, StoragePlugin } from '@capacitor/core'
 
 import { InterfaceLoginResponse, InterfaceUser } from 'src/interfaces'
 import { storeAuthenticationToken, getAuthenticationToken } from './authentication'
+import md5 from 'md5'
 
 Vue.use(VueCompositionAPI)
 
@@ -29,7 +30,7 @@ const useUser = () => {
   const populateUser = (loggedInUser: InterfaceUser) => {
     let newUser: InterfaceUser|null = null
     newUser = {...loggedInUser}
-    newUser.displayPictureUrl = 'https://api.adorable.io/avatars/500/' + String(newUser.email) + '.png'
+    newUser.displayPictureUrl = `https://www.gravatar.com/avatar/${md5(String(newUser.email))}`
 
     user.value = {...newUser}
   }

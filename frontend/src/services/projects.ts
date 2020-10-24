@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios, { AxiosResponse } from 'axios'
 import { reactive } from '@vue/composition-api'
+import md5 from 'md5'
 
 import config from '../config/config'
 
@@ -13,7 +16,7 @@ const packageProject = (project: InterfaceProject) => {
 
   if(packagedProject.user.displayPictureUrl === null) {
     packagedProject.user.displayPictureUrl = {
-      url: `https://api.adorable.io/avatars/500/${packagedProject.user.email || 'example@example.com'}@adorable.png`
+      url: `https://www.gravatar.com/avatar/${md5(packagedProject.user.email || 'example@example.com')}`
     }
   }
   return packagedProject

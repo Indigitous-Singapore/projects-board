@@ -7,7 +7,7 @@
     <template v-slot:label>
       <div class="row items-center no-wrap">
         <q-avatar size="32px">
-          <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
+          <img :src="user.displayPictureUrl">
         </q-avatar>
         <div class="text-center q-ml-sm">
           {{ user.firstName }} {{ user.lastName }}
