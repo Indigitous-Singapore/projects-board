@@ -15,11 +15,11 @@
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
           <project-card
             :id="String(props.row.id)"
-            :img="config.apiUrl + props.row.displayPictureUrl.url"
-            :category="props.row.causes"
+            :img="props.row.displayPictureUrl.url"
+            :category="props.row.fields"
             :title="props.row.title"
             :description="props.row.caption"
-            :tags="props.row.fields"
+            :tags="props.row.causes"
             class="q-ma-sm block"
           />
         </div>
