@@ -1,4 +1,10 @@
 module.exports = ({ env }) => ({
+  email: {
+    provider: 'sendgrid',
+    providerOptions: {
+      apiKey: env('SENDGRID_API_KEY'),
+    }
+  },
   upload: {
     provider: 'aws-s3',
     providerOptions: {
