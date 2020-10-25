@@ -4,17 +4,14 @@
         <h2 class="text-weight-bold">Latest Projects</h2>
     </div>
     <div class="row justify-center q-pa-md-xl q-pa-xs-none">
-      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 column">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+        v-for="(project, index) in state.projects"
+        :key="index"
+        >
         <project-card
-          v-for="(project, index) in state.projects"
-          :key="index"
-          :img="project.displayPictureUrl.url"
-          :id="project.id"
-          :category="project.fields"
-          :title="project.title"
-          :description="project.caption"
-          :tags="project.causes"
-          class="q-mr-md q-mb-md"
+          :project="project"
+          class="q-mr-lg q-mb-md"
         />
       </div>
     </div>

@@ -38,7 +38,7 @@
           </div>
         </q-toolbar>
         <NavbarAppLauncher />
-        <q-separator vertical inset />
+        <q-separator vertical inset/>
         <NavbarRight />
       </div>
     </q-header>

@@ -1,17 +1,22 @@
 <template>
 <q-toolbar
   v-if="user && user.email !== null"
-  class="col-auto q-mx-md gt-sm"
+  class="col-auto gt-sm"
   >
+  <q-btn
+    class="q-mx-lg q-px-sm"
+    color="accent"
+    label="Start A Project"
+    to="/dashboard/projects/new"
+    rounded
+    outline
+    />
   <q-btn-dropdown stretch flat no-caps>
     <template v-slot:label>
       <div class="row items-center no-wrap">
         <q-avatar size="32px">
           <img :src="user.displayPictureUrl">
         </q-avatar>
-        <div class="text-center q-ml-sm">
-          {{ user.firstName }} {{ user.lastName }}
-        </div>
       </div>
     </template>
 

@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "Project",
   "info": {
-    "name": "Project"
+    "name": "Project",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
@@ -57,22 +59,27 @@
       "repeatable": true,
       "component": "positions.open-positions"
     },
-    "fields": {
+    "displayed": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "status": {
       "type": "enumeration",
       "enum": [
-        "fundraising",
-        "technology",
-        "evangelism",
-        "outreach",
-        "worship"
+        "active",
+        "inactive",
+        "cancelled",
+        "completed"
       ],
+      "default": "active",
       "required": true
     },
     "causes": {
-      "type": "enumeration",
-      "enum": [
-        "theUnreached"
-      ]
+      "collection": "cause"
+    },
+    "fields": {
+      "collection": "field"
     }
   }
 }

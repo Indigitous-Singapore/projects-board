@@ -85,6 +85,24 @@ export interface InterfaceProjectPosition {
   active: boolean;
 }
 
+export interface InterfaceCause {
+  'id': number;
+  'title': string;
+  'description': string | null,
+  'created_at': string;
+  'updated_at': string;
+  'image': InterfaceImage | null
+}
+
+export interface InterfaceField {
+  'id': number;
+  'title': string;
+  'description': string | null,
+  'created_at': string;
+  'updated_at': string;
+  'image': InterfaceImage | null
+}
+
 export interface InterfaceProject {
   id: number;
   title: string;
@@ -106,8 +124,8 @@ export interface InterfaceProject {
   openPositions: InterfaceProjectPosition[];
 
   //  Filters
-  fields?: string | null;
-  causes?: string | null;
+  fields: InterfaceField[];
+  causes: InterfaceCause[];
 
   //  Meta
   created_at: string;
@@ -129,6 +147,7 @@ export interface InterfaceUser {
   confirmed?: boolean|null;
   blocked?: boolean|null;
   role?: number|null;
+  createdAtFormatted: string|null;
   created_at: string|null;
   updated_at: string|null;
 }

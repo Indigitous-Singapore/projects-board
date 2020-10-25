@@ -8,7 +8,8 @@
           <div class="xs-hide">
             <ExploreFilters
               :updateCurrentField="updateCurrentField"
-              :state="state"
+              :selectedField="selectedField"
+              :selectedCauses="selectedCauses"
               :fields="fields"
               :causes="causes"
               />
@@ -28,7 +29,8 @@
               <q-card-section>
                 <ExploreFilters
                   :updateCurrentField="updateCurrentField"
-                  :state="state"
+                  :selectedField="selectedField"
+                  :selectedCauses="selectedCauses"
                   :fields="fields"
                   :causes="causes"
                   />
@@ -84,6 +86,8 @@
 import _ from 'lodash'
 import { defineComponent, onBeforeMount, reactive, ref, Ref, watch } from '@vue/composition-api'
 import { useProjects } from '../../services/projects'
+import { useCauses } from '../../services/causes'
+import { useFields } from '../../services/fields'
 import { InterfaceProject } from 'src/interfaces'
 import ExploreBanner from '../../components/Explore/ExploreBanner.vue'
 import ExploreContent from '../../components/Explore/ExploreContent.vue'
@@ -102,50 +106,84 @@ export default defineComponent({
   setup (props, ctx) {
     const loading = ref(true)
     const dialogIsOpen = ref(false)
-    const defaultStateCauses: Record<string, boolean> = {
-      'theUnreached': true
-    }
-    const causes: Ref<Record<string, string>> = ref({
-      'theUnreached': 'The Unreached'
-    })
-    const fields: Ref<Record<string, string>> = ref({
-      'all': 'All Fields',
-      'fundraising': 'Fundraising',
-      'technology': 'Technology',
-      'evangelism': 'Evangelism',
-      'outreach': 'Outreach',
-      'worship': 'Worship'
-    })
+    const defaultStateCauses: Record<string, boolean> = {}
+    const causes: Ref<Record<string, string>> = ref({})
+    const fields: Ref<Record<string, string>> = ref({})
     const { 
       state: projectsState,
       getProjects
     } = useProjects()
-    const state = reactive({
-      field: 'all',
-      causes: {...defaultStateCauses}
-    })
+    const { 
+      state: causesState,
+      getCauses
+    } = useCauses()
+    const { 
+      state: fieldsState,
+      getFields
+    } = useFields()
+
+    const selectedField: Ref<string> = ref('all')
+    const selectedCauses: Ref<Record<string, boolean>> = ref({})
 
     /**
      * Lifecyle
      */
     onBeforeMount(async () => {
+      await getFilteredFields()
+      await getFilteredCauses()
       await getFilteredProjects()
+
+      /**
+       * Observers
+       */
+      watch(selectedCauses, getFilteredProjects)
+      watch(selectedField, getFilteredProjects)
     })
+
+
+    /**
+     * Gets Fields
+     */
+    const getFilteredFields = async () => {
+      await getFields()
+      const newFields: Record<string, string> = {
+        'all': 'All Fields'
+      }
+      for (let field of fieldsState.value) {
+        newFields[field.id] = field.title
+      }
+      fields.value = newFields
+    }
+
+    /**
+     * Gets causes
+     */
+    const getFilteredCauses = async () => {
+      await getCauses()
+      const newCauses: Record<string, string> = {}
+      const newSelectedCauses: Record<string, boolean> = {}
+      for (let cause of causesState.value) {
+        newCauses[cause.id] = cause.title
+        newSelectedCauses[cause.id] = true
+      }
+      causes.value = newCauses
+      selectedCauses.value = newSelectedCauses
+    }
 
     /**
      * Gets the projects based on the filters
      */
     const getFilteredProjects = async () => {
       const causes: string[] = []
-      // console.log('causes', state.causes)
-      Object.keys(state.causes).forEach(cause => {
-        if(state.causes[cause] === true){
+      console.log('causes', selectedCauses.value)
+      Object.keys(selectedCauses.value).forEach(cause => {
+        if(selectedCauses.value[cause] === true){
           causes.push(cause)
         }
       })
       await getProjects(
-        [state.field],
-        causes,
+        [selectedField.value],
+        (causes.length > 0 ? causes : ['all']),
       )
       loading.value = false
     }
@@ -156,7 +194,7 @@ export default defineComponent({
      * @param {string} key
      */
     const updateCurrentField = (key: string): void => {
-      state.field = key.toString()
+      selectedField.value = key.toString()
     }
 
     /**
@@ -166,17 +204,13 @@ export default defineComponent({
       dialogIsOpen.value = !dialogIsOpen.value
     }
 
-    /**
-     * Observers
-     */
-    watch(state, getFilteredProjects)
-
     return {
       causes,
       dialogIsOpen,
       fields,
       loading,
-      state,
+      selectedCauses,
+      selectedField,
       projectsState,
       toggleFilter,
       updateCurrentField,
