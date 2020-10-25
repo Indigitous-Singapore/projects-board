@@ -1,37 +1,50 @@
 <template>
-  <q-card
-    class="project-card"
+<q-card
+  class="project-card"
+  >
+  <router-link
+    class="project-card-link"
+    :to="`/projects/${project.id}`"
     >
-    <router-link
-      :to="'/projects/' + projectId"
-      >
-      <q-img
-        :src="img"
-        img-class="q-pa-sm"
-        :ratio="16/9"
-        basic
-        cover
-        />
-    </router-link>
-    <q-card-section class="text-left">
-      <div class="text-overline">
-        {{category}}
-      </div> 
-      <div class="text-h5 text-weight-bold q-mb-md ellipsis-2-lines">
-        {{title}}
-      </div>
-      <div class="text-p ellipsis-3-lines">
-        {{description}}
-      </div>
-    </q-card-section>
-    <!--
-    <q-card-actions class="q-px-md">
-      <div>
-       Tags: {{tags}}
-      </div>
-    </q-card-actions>
-    -->
-  </q-card>
+    <q-img
+      :src="project.displayPictureUrl.url"
+      img-class="q-pa-sm"
+      :ratio="16/9"
+      basic
+      cover
+      />
+  </router-link>
+  <q-card-section class="text-left">
+    <div class="q-mb-md">
+      <span
+        class="text-blue-9 q-ml-none q-mr-sm"
+        v-for="field in project.fields"
+        :key="field"
+        >
+        {{ field.title }}
+      </span>
+    </div> 
+    <div class="text-h5 text-weight-bold q-mb-md ellipsis-2-lines">
+      <router-link
+        style="text-decoration: none;"
+        class="project-card-link text-grey-10"
+        :to="`/projects/${project.id}`"
+        >
+        {{ project.title }}
+      </router-link>
+    </div>
+    <div class="text-p ellipsis-3-lines">
+      {{ project.caption }}
+    </div>
+  </q-card-section>
+  <!--
+  <q-card-actions class="q-px-md">
+    <div>
+    Tags: {{tags}}
+    </div>
+  </q-card-actions>
+  -->
+</q-card>
 </template>
 
 <script lang="ts">
@@ -40,21 +53,7 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name: 'ProjectCard',
   props: {
-    id: String,
-    img: String,
-    category: String,
-    title: String,
-    description: String,
-    tags: String
-  },
-  components: {
-  },
-  setup (props, ctx) {
-    const projectId = String(props.id)
-
-    return {
-      projectId
-    }
+    project: Object
   }
 })
 </script>

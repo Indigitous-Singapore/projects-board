@@ -14,12 +14,7 @@
       <template v-slot:item="props">
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
           <project-card
-            :id="String(props.row.id)"
-            :img="props.row.displayPictureUrl.url"
-            :category="props.row.fields"
-            :title="props.row.title"
-            :description="props.row.caption"
-            :tags="props.row.causes"
+            :project="props.row"
             class="q-ma-sm block"
           />
         </div>

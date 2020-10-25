@@ -1,7 +1,7 @@
 <template>
   <q-page class="container">
     <DashboardHeader
-      title="Dashboard"
+      title="Create New Project"
       />
     <div class="row">
       <div class="column col-xs-12">
@@ -17,10 +17,10 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import DashboardHeader from 'components/Structure/DashboardHeader.vue'
-import { useUser } from '../../services/user'
+import { useUser } from '../../../services/user'
 
 export default defineComponent({
-  name: 'PageDashboardHome',
+  name: 'PageDashboardCreateNew',
   components: {
     DashboardHeader,
   },

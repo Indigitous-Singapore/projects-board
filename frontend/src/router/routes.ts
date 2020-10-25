@@ -65,7 +65,8 @@ const routes: RouteConfig[] = [
     path: '/dashboard',
     component: () => import('layouts/DashboardLayout.vue'),
     children: [
-      { path: '', name:'dashboard', meta: {private: true}, component: () => import('pages/Dashboard/Home.vue') }
+      { path: '', name:'dashboard', meta: {private: true}, component: () => import('pages/Dashboard/Home.vue') },
+      { path: 'projects/new', name:'projects-new', meta: {private: true}, component: () => import('pages/Dashboard/Projects/Create.vue') }
     ]
   },
   {

@@ -8,7 +8,7 @@
       <q-item
         v-for="(label, key) of fields"
         :key="key"
-        :class="'q-py-none project-field ' + ((String(key) === state.field) ? 'q-item--active' : '')"
+        :class="'q-py-none project-field ' + ((String(key) === selectedField) ? 'q-item--active' : '')"
         @click="() => { updateCurrentField(key.toString()) }"
         clickable
         >
@@ -25,13 +25,18 @@
     <h5 class="text-grey-6 q-mb-sm xs-hide">CAUSES</h5>
     <q-list
       id="project-causes">
-      <q-checkbox
+      <q-item
         v-for="(label, cause) of causes"
-        class="project-cause"
-        v-model="state.causes[cause]"
         :key="cause"
-        :label="label"
-        />
+        class="q-pa-none q-ma-none"
+        >
+        <q-checkbox
+          class="project-cause"
+          v-model="selectedCauses[cause]"
+          :key="cause"
+          :label="label"
+          />
+      </q-item>
     </q-list>
   </div>
 </div>
@@ -51,9 +56,13 @@ export default defineComponent({
         return key
       }
     },
-    state: {
+    selectedCauses: {
       type: Object,
       default: {}
+    },
+    selectedField: {
+      type: String,
+      default: 'all'
     },
     causes: {
       type: Object,

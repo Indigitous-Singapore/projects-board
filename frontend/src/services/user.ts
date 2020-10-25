@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueCompositionAPI, { Ref, ref } from '@vue/composition-api'
 import axios from 'axios'
+import dayjs from 'dayjs'
 import { Plugins, StoragePlugin } from '@capacitor/core'
 
 import { InterfaceLoginResponse, InterfaceUser } from 'src/interfaces'
@@ -21,6 +22,7 @@ const defaultUser: InterfaceUser = {
   username: null,
   created_at: null,
   updated_at: null,
+  createdAtFormatted: null
 }
 
 const user: Ref<InterfaceUser|null> = ref({...defaultUser})
@@ -30,7 +32,11 @@ const useUser = () => {
   const populateUser = (loggedInUser: InterfaceUser) => {
     let newUser: InterfaceUser|null = null
     newUser = {...loggedInUser}
+    
     newUser.displayPictureUrl = `https://www.gravatar.com/avatar/${md5(String(newUser.email))}`
+    if (newUser.created_at) {
+      newUser.createdAtFormatted = dayjs(newUser.created_at).format('DD MMM YYYY')
+    }
 
     user.value = {...newUser}
   }
