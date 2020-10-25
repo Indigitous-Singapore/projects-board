@@ -1,5 +1,8 @@
 <template>
-  <q-card class="flex project-card q-mt-xl">
+  <q-card
+    v-if="project"
+    class="flex project-card q-mt-xl"
+    >
     <q-card-section
       class="text-left q-pa-none row"
       style="width: 100%"
@@ -59,12 +62,7 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name: 'ProjectCardHorizontal',
   props: {
-    project: {
-      type: Object,
-      default: () => {
-        return {}
-      }
-    }
+    project: Object
   }
 })
 </script>

@@ -14,9 +14,13 @@
         <h6 class="q-mb-none"><b>+&nbsp;&nbsp;CREATE&nbsp;NEW&nbsp;PROJECT</b></h6>
       </q-card>
     </router-link>
+  </div>
+  <div
+    class="column col-12"
+    v-for="(project, index) in state.projects"
+    :key="index"
+      >
     <ProjectCardHorizontal
-      v-for="project in state.projects"
-      :key="project.id"
       :project="project"
       />
   </div>
@@ -28,7 +32,7 @@ import { defineComponent, onBeforeMount } from '@vue/composition-api'
 import { useProjects } from '../../../services/projects'
 import { useUser } from '../../../services/user'
 
-import ProjectCardHorizontal from '../../Common/ProjectCardHorizontal'
+import ProjectCardHorizontal from '../../Common/ProjectCardHorizontal.vue'
 
 export default defineComponent({
   name: 'ComponentDashboardHomeMyProjects',

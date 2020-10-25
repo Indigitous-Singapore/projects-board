@@ -55,28 +55,28 @@ export default defineComponent({
 
     const links = [
       {
-        "image": "https://launchpad.indigitous.sg/icons/favicon-128x128.png",
-        "title": "Launchpad",
-        "description": "Kickstarter For Digital Missions",
-        "href": "https://launchpad.indigitious.sg"
+        'image': 'https://launchpad.indigitous.sg/icons/favicon-128x128.png',
+        'title': 'Launchpad',
+        'description': 'Kickstarter For Digital Missions',
+        'href': 'https://launchpad.indigitious.sg'
       },
       {
-        "image": "https://guides.indigitous.sg/img/grape/person-exiting-app.png",
-        "title": "Guides",
-        "description": "Resources and tools to help digitalise your Kingdom work",
-        "href": "https://guides.indigitous.sg"
+        'image': 'https://guides.indigitous.sg/img/grape/person-exiting-app.png',
+        'title': 'Guides',
+        'description': 'Resources and tools to help digitalise your Kingdom work',
+        'href': 'https://guides.indigitous.sg'
       },
       {
-        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-        "title": "Open Source",
-        "description": "Check out our open source projects",
-        "href": "https://github.com/indigitous-Singapore"
+        'image': 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+        'title': 'Open Source',
+        'description': 'Check out our open source projects',
+        'href': 'https://github.com/indigitous-Singapore'
       },
       {
-        "image": "https://indigitous.sg/wp-content/uploads/2019/09/indigitous.icon_.jpeg",
-        "title": "Indigitous Singapore",
-        "description": "Find out about us",
-        "href": "https://ndgt.sg"
+        'image': 'https://indigitous.sg/wp-content/uploads/2019/09/indigitous.icon_.jpeg',
+        'title': 'Indigitous Singapore',
+        'description': 'Find out about us',
+        'href': 'https://ndgt.sg'
       },
     ]
 
