@@ -43,13 +43,24 @@
       </div>
       <div class="column col-sm-12 col-md-3 col-lg-3 flex justify-center">
         <q-btn
-          class="q-ma-md q-py-xs"
+          class="q-mb-md q-mx-md q-py-xs"
           color="accent"
           outline
           rounded
           no-caps
           label="Edit Project"
           :to="`/dashboard/projects/${project.id}`"
+          />
+        <q-btn
+          class="q-mx-md q-py-xs"
+          color="grey-7"
+          unelevated
+          rounded
+          no-caps
+          label="View Project"
+          type="a"
+          target="_blank"
+          :href="`/projects/${project.id}`"
           />
       </div>
     </q-card-section>

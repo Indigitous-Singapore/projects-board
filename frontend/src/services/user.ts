@@ -79,10 +79,33 @@ const useUser = () => {
     return
   }
 
+  /**
+   * Update Profile
+   */
+  const updateProfile = async (profile: Record<string, string>): Promise<void> => {
+    const token: string|null = await getAuthenticationToken()
+
+    if (token && user.value && user.value.id) {
+      const response = await axios
+        .put(`${String(process.env.apiUrl)}/users/${user.value.id}`, {
+          ...profile,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+        populateUser(response.data)
+    }
+
+    return
+  }
+
   return {
     login,
     logout,
     getProfile,
+    updateProfile,
     user
   }
 }

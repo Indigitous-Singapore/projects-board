@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "method": "PUT",
+      "path": "/users/:id",
+      "handler": "User.update",
+      "config": {
+        "policies": [
+          "global::restrictUserEndpoint"
+        ],
+        "prefix": "",
+        "description": "Update an existing user",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User",
+          "actionType": "update"
+        }
+      }
+    }
+  ]
+}

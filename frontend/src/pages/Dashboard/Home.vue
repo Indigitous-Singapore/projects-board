@@ -69,7 +69,11 @@
           </q-tab-panel>
 
           <q-tab-panel name="profile" class="q-my-lg q-px-none">
-            <UnderConstruction />
+            <div class="row">
+              <div class="column col-12 col-sm-6">
+                <ComponentDashboardProfilePersonal />
+              </div>
+            </div>
           </q-tab-panel>
 
           <q-tab-panel name="settings" class="q-my-lg q-px-none">
@@ -85,6 +89,7 @@
 import { defineComponent, reactive } from '@vue/composition-api'
 import ComponentDashboardHomeHeader from 'components/Dashboard/Home/Header.vue'
 import ComponentDashboardHomeMyProjects from 'components/Dashboard/Home/MyProjects.vue'
+import ComponentDashboardProfilePersonal from 'components/Dashboard/Profile/Personal.vue'
 import UnderConstruction from 'components/Dashboard/UnderConstruction.vue'
 import { useUser } from '../../services/user'
 
@@ -93,6 +98,7 @@ export default defineComponent({
   components: {
     ComponentDashboardHomeHeader,
     ComponentDashboardHomeMyProjects,
+    ComponentDashboardProfilePersonal,
     UnderConstruction
   },
   setup (props, ctx) {
