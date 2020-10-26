@@ -64,12 +64,13 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, Ref } from '@vue/composition-api'
+import { AxiosError } from 'axios'
 import { useUser } from '../../../services/user'
 
 export default defineComponent({
   name: 'ComponentDashboardProfilePersonal',
   setup (props, ctx) {
-    const submitting: Ref<Boolean> = ref(false)
+    const submitting: Ref<boolean> = ref(false)
     const formUser: Record<string, string> = reactive({
       firstName: '',
       lastName:'',
@@ -94,8 +95,9 @@ export default defineComponent({
       //  Update user
       try {
         await updateProfile(formUser)
-      } catch (err) {
-        alert(err.response.data.message)
+      } catch (error) {
+        const err: AxiosError = (error as AxiosError)
+        alert('An error occurred.')
       }
       submitting.value = false
     }
