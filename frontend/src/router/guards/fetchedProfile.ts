@@ -14,7 +14,7 @@ export default async (to: Route, from: Route, next: NavigationGuardNext) => {
   
   try {
     await getProfile()
-  } catch (error: any) {
+  } catch (error) {
     const profileError: AxiosError = (error as AxiosError)
     console.error(profileError.response)
     
