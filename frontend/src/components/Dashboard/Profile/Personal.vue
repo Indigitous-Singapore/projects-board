@@ -97,11 +97,7 @@ export default defineComponent({
         await updateProfile(formUser)
       } catch (error) {
         const err: AxiosError = (error as AxiosError)
-        if (err && err.response) {
-          alert(err.response.data.message)
-        } else {
-          console.error(err)
-        }
+        alert('An error occurred.')
       }
       submitting.value = false
     }
