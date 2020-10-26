@@ -1,17 +1,28 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Vue from 'vue'
 import { Route, NavigationGuardNext } from 'vue-router'
 import VueCompositionApi from '@vue/composition-api'
 
-import { isAuthenticated } from '../../services/authentication'
 import { useUser } from '../../services/user'
+import { AxiosError } from 'axios'
 
 Vue.use(VueCompositionApi)
 
 export default async (to: Route, from: Route, next: NavigationGuardNext) => {
-  const { getProfile } = useUser()
-  const authenticated = await isAuthenticated()
+  const { getProfile, logout } = useUser()
   
-  await getProfile()
+  try {
+    await getProfile()
+  } catch (error: any) {
+    const profileError: AxiosError = (error as AxiosError)
+    console.error(profileError.response)
+    
+    alert(`${profileError.response?.data.error}\nPlease login again`)
+    await logout()
+
+    next('/login')
+  }
   
   next()
 }
