@@ -9,6 +9,7 @@ import _ from 'lodash'
 import qs from 'qs'
 
 import config from '../config/config'
+import { markdownToHtml } from '../utilities/html'
 
 //  Dummy data
 // import projectsData from '../data/projects.data'
@@ -24,6 +25,13 @@ const packageProject = (project: InterfaceProject) => {
       url: `https://www.gravatar.com/avatar/${md5(packagedProject.user.email || 'example@example.com')}`
     }
   }
+
+  //  convert markdown to html
+  packagedProject.aboutOurStory = markdownToHtml(packagedProject.aboutOurStory)
+  packagedProject.aboutCommitment = markdownToHtml(packagedProject.aboutCommitment)
+  packagedProject.aboutWhatWeDo = markdownToHtml(packagedProject.aboutWhatWeDo)
+  packagedProject.faqs = markdownToHtml(packagedProject.faqs)
+
   return packagedProject
 }
 
@@ -115,7 +123,6 @@ const useProjects = () => {
       console.error('Projects is undefined')
     } else {
       state.projects = [...projects]
-      console.log(state)
     }
 
     return projects
