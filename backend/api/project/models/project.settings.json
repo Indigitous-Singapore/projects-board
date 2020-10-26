@@ -16,13 +16,13 @@
       "private": false,
       "required": true,
       "unique": true,
-      "maxLength": 36,
+      "maxLength": 48,
       "minLength": 8
     },
     "caption": {
       "type": "text",
       "required": true,
-      "maxLength": 48
+      "maxLength": 120
     },
     "displayPictureUrl": {
       "model": "file",
