@@ -14,7 +14,9 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'home', component: () => import('../pages/Home.vue') }
+      { path: '', name: 'home', component: () => import('../pages/Home.vue') },
+      { path: 'terms', name: 'terms', component: () => import('../pages/Legal/Terms.vue') },
+      { path: 'privacy', name: 'privacy', component: () => import('../pages/Legal/Privacy.vue') }
     ]
   },
   {
@@ -76,23 +78,6 @@ const routes: RouteConfig[] = [
       { path: '', component: () => import('pages/Explore/index.vue') }
     ]
   },
-/*
-  {
-    path: '/users',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Users/index.vue') },
-      { path: ':userId', component: () => import('pages/Users/single.vue') }
-    ]
-  },
-  {
-    path: '/dashboard',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Projects/single.vue') }
-    ]
-  },
-  */
 
   // Always leave this as last one,
   // but you can also remove it

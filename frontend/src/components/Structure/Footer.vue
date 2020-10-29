@@ -54,12 +54,10 @@
   <q-toolbar>
     <div class="col-1"></div>
     <span class="q-mx-md text-caption text-grey-5">&copy; Copyright Indigitous Singapore {{ currentYear }}</span>
-    <!--
     <q-separator dark vertical inset spaced="md" class="q-my-md" />
-    <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md text-caption" />
+    <q-btn to="/terms" color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md text-caption" />
     <q-separator dark vertical inset spaced="md" class="q-my-md text-caption" />
-    <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md text-caption" />
-    -->
+    <q-btn to="/privacy" color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md text-caption" />
   </q-toolbar>
 </q-footer>
 </template>
