@@ -5,9 +5,5 @@ module.exports = ({ env }) => ({
     auth: {
       secret: env('ADMIN_JWT_SECRET', '9635327ce9f2dbfe95fd2f21f55c34e4'),
     },
-    forgotPassword: {
-      from : env('MAIL_FROM'),
-      replyTo: env('MAIL_REPLY_TO') || env('MAIL_FROM'),
-    }
   },
 });
