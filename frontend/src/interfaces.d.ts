@@ -48,6 +48,12 @@ export interface InterfaceLoginResponse {
   user: InterfaceUser;
 }
 
+export interface InterfaceAuthenticationErrors {
+  email: string|null;
+  password: string|null;
+  passwordConfirmation: string|null;
+  code: string|null;
+}
 export interface InterfaceLoginError {
   statusCode: number;
   error: string;

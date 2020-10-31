@@ -5,5 +5,5 @@ export default {
   'privacyEffectiveDate': process.env.privacyEffectiveDate || '29/10/2020',
   'privacyLastUpdatedDate': process.env.privacyLastUpdatedDate || '29/10/2020',
   'appUrl': process.env.appUrl || 'https://launchpad.indigitous.sg,',
-  'apiUrl': process.env.apiUrl || 'http://localhost:1337'
+  'apiUrl': process.env.apiUrl || 'https://api.launchpad.indigitous.sg'
 }
