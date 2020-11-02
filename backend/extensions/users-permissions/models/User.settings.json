@@ -67,6 +67,11 @@
     "projects": {
       "via": "user",
       "collection": "project"
-    }
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
   }
 }
