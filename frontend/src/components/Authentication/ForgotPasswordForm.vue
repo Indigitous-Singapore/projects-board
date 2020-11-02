@@ -21,6 +21,7 @@
 <q-form
     @submit="forgot"
     v-else
+    :style="`max-width: ${maxWidth}px`"
     class="forgot-password-form"
   >
     <p class="text-grey-9">Let us know your email and we will send you instructions how to reset it.</p>
@@ -39,7 +40,7 @@
       </template>
     </q-input>
   <div>
-    <q-btn unelevated class="full-width q-py-xs" label="Reset Password" type="submit" color="accent"/>
+    <q-btn unelevated rounded class="full-width q-py-xs" label="Reset Password" type="submit" color="accent"/>
   </div>
 </q-form>
 </template>
@@ -50,6 +51,12 @@ import { useAuthentication } from '../../services/authentication'
 
 export default defineComponent({
   name: 'AuthenticationForgotPasswordForm',
+  props: {
+    maxWidth: {
+      type: Number,
+      default: 360
+    }
+  },
   setup () {
     const { errors, loading, resetEmailSent, forgotPassword } = useAuthentication()
     const email: Ref<string> = ref('')
@@ -76,7 +83,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .forgot-password-form {
-  max-width: 360px;
   width: 100%;
 }
 </style>

@@ -70,8 +70,11 @@
 
           <q-tab-panel name="profile" class="q-my-lg q-px-none">
             <div class="row">
-              <div class="column col-12 col-sm-6">
+              <div class="column col-12 col-sm-7">
                 <ComponentDashboardProfilePersonal />
+              </div>
+              <div class="column col-12 col-sm-5">
+                <ComponentDashboardProfileResetPassword />
               </div>
             </div>
           </q-tab-panel>
@@ -90,6 +93,7 @@ import { defineComponent, reactive } from '@vue/composition-api'
 import ComponentDashboardHomeHeader from 'components/Dashboard/Home/Header.vue'
 import ComponentDashboardHomeMyProjects from 'components/Dashboard/Home/MyProjects.vue'
 import ComponentDashboardProfilePersonal from 'components/Dashboard/Profile/Personal.vue'
+import ComponentDashboardProfileResetPassword from 'components/Dashboard/Profile/ResetPassword.vue'
 import UnderConstruction from 'components/Dashboard/UnderConstruction.vue'
 import { useUser } from '../../services/user'
 
@@ -99,6 +103,7 @@ export default defineComponent({
     ComponentDashboardHomeHeader,
     ComponentDashboardHomeMyProjects,
     ComponentDashboardProfilePersonal,
+    ComponentDashboardProfileResetPassword,
     UnderConstruction
   },
   setup (props, ctx) {
