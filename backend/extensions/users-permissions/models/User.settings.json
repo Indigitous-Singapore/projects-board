@@ -72,6 +72,6 @@
       "type": "string",
       "configurable": false,
       "private": true
-    },
+    }
   }
 }
