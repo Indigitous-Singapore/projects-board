@@ -17,6 +17,7 @@ const defaultAuthenticationErrors: InterfaceAuthenticationErrors = {
   password: null,
   passwordConfirmation: null,
   code: null,
+  others: null,
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -121,6 +122,12 @@ const useAuthentication = () => {
                 case 'Auth.form.error.invalid':
                 case 'Auth.form.error.password.provide':
                   errors.password = message.message
+                  break
+                case 'Auth.form.error.confirmed':
+                  errors.others = `${message.message}<br/><small><a href="/verify-email?email=${String(state.email)}">Resend Email?</a></small>`
+                  break
+                default:
+                  errors.others = message.message
                   break
               }
             }
