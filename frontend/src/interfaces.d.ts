@@ -53,6 +53,15 @@ export interface InterfaceAuthenticationErrors {
   password: string|null;
   passwordConfirmation: string|null;
   code: string|null;
+  others: string|null;
+}
+export interface InterfaceSignupErrors {
+  firstName: string|null;
+  lastName: string|null;
+  email: string|null;
+  password: string|null;
+  passwordconfirm: string|null;
+  others: string|null;
 }
 export interface InterfaceLoginError {
   statusCode: number;

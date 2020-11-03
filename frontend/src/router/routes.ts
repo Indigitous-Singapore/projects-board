@@ -23,6 +23,7 @@ const routes: RouteConfig[] = [
 
       //  Authentication
       { path: 'start', name:'start', component: () => import('pages/Authentication/Signup.vue') },
+      { path: 'verify-email', name:'verify-email', component: () => import('pages/Authentication/verifyEmail.vue') },
       { path: 'login', name: 'login', component: () => import('pages/Authentication/Login.vue') },
       { path: 'logout', name: 'logout', meta: {private: true}, component: () => import('pages/Authentication/Logout.vue') },
       { path: 'forgot-password', name: 'forgot-password', component: () => import('pages/Authentication/ForgotPassword.vue') },
