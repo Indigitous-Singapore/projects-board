@@ -19,7 +19,7 @@
       <span
         class="text-blue-9 q-ml-none q-mr-sm"
         v-for="field in project.fields"
-        :key="field"
+        :key="field.id"
         >
         {{ field.title }}
       </span>
