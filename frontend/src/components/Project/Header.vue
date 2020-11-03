@@ -24,14 +24,17 @@
       </h5>
     </div>
 
-    <div class="row q-pt-lg">
+    <div
+      v-if="lookingForSkills.length > 0"
+      class="row q-pt-lg">
       <div>
         <h5 class="q-mb-none"><b>Looking for</b></h5>
-        <q-chip class="q-ml-none q-px-lg q-py-md">
-          Developer
-        </q-chip>
-        <q-chip class="q-px-lg q-py-md">
-          Designer
+        <q-chip
+          v-for="(skill) in lookingForSkills"
+          :key="skill"
+          class="q-ml-none q-px-lg q-py-md"
+          >
+          {{ skill }}
         </q-chip>
       </div>
     </div>
@@ -53,7 +56,11 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { defineComponent } from '@vue/composition-api'
+import _ from 'lodash'
+import { InterfaceProjectPosition } from 'src/interfaces';
 import config from '../../config/config'
 
 export default defineComponent({
@@ -66,9 +73,17 @@ export default defineComponent({
       }
     }
   },
-  setup(props, ctx) {
+  setup(props) {
+    const lookingForSkills = new Set()
+
+    props.project.openPositions.forEach((position: InterfaceProjectPosition) => {
+      lookingForSkills.add(_.startCase(position.skills))
+    })
+    console.log(Array.from(lookingForSkills))
+
     return {
       config,
+      lookingForSkills: Array.from(lookingForSkills)
     }
   }
 });
