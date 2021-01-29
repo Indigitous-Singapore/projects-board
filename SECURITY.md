@@ -2,7 +2,7 @@
 
 We value the security community and believe that responsible disclosure of security vulnerabilities in open source packages helps us ensure the security and privacy of the users.
 
-If you believe you have found a security vulnerability on Resource Portal, we encourage you to let us know right away. We will investigate all legitimate reports and do our best to quickly fix the problem. Before reporting though, please review our responsible disclosure policy, and those things that should not be reported.
+If you believe you have found a security vulnerability on Projects Board, we encourage you to let us know right away. We will investigate all legitimate reports and do our best to quickly fix the problem. Before reporting though, please review our responsible disclosure policy, and those things that should not be reported.
 
 Submit your report to developer@indigitous.sg (one issue per report) and respond to the report with any updates. Please do not contact volunteers, employees directly or through other channels about a report.
 
