@@ -20,7 +20,7 @@
     "@types/marked": "^1.1.0",
     "@types/md5": "^2.2.1",
     "@vue/composition-api": "^0.6.4",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.9.4",
     "dompurify": "^2.2.0",
