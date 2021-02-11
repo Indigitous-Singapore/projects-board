@@ -14,6 +14,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            whoami
             sudo su strapi
             whoami | cat >> out.txt
             pwd | cat >> out.txt
