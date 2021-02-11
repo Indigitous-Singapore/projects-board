@@ -15,6 +15,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo su strapi
+            whoami | cat >> out.txt
             pwd | cat >> out.txt
             cd ~
             pwd | cat >> out.txt
