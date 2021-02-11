@@ -13,4 +13,16 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: whoami
+          script: |
+            sudo su strapi
+            cd ~
+            git clone git@github.com:Indigitous-Singapore/projects-board.git
+            rm -rf strapi-development
+            mv projects-board/backend strapi-development
+            cd strapi-development
+            cat ${{ secrets.ENV }} > .env
+            npm install
+            NODE_ENV=production npm run build
+            pm2 del launchpad
+            NODE_TLS_REJECT_UNAUTHORIZED='0' NODE_ENV=production pm2 start server.js -f --name launchpad
+            rm -rf ../git
