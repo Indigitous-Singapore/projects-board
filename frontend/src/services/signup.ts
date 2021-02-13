@@ -1,9 +1,7 @@
 import { reactive, ref, Ref } from '@vue/composition-api'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import axios, { AxiosError } from 'axios'
 
-import { InterfaceLoginResponse, InterfaceStateSignup, InterfaceUser } from 'src/interfaces'
-import { Router } from '../router/index'
-import { useUser } from './user'
+import { InterfaceSignupErrors, InterfaceLoginError, InterfaceStateSignup } from 'src/interfaces'
 
 const defaultState: InterfaceStateSignup = {
   firstName: null,
@@ -12,22 +10,32 @@ const defaultState: InterfaceStateSignup = {
   password: null,
   passwordconfirm: null,
 }
+const defaultSignupErrors: InterfaceSignupErrors = {
+  firstName: null,
+  lastName: null,
+  email: null,
+  password: null,
+  passwordconfirm: null,
+  others: null,
+}
 
 const state: InterfaceStateSignup = reactive({
   ...defaultState
 })
-const errors: InterfaceStateSignup = reactive({
-  ...defaultState
+const errors: InterfaceSignupErrors = reactive({
+  ...defaultSignupErrors
 })
+
 const loading: Ref<boolean> = ref(false)
+const completed: Ref<boolean> = ref(false)
 
 const useSignup = () => {
   const reset = (): void => {
-    state.firstName = defaultState.firstName,
+    state.firstName = defaultState.firstName
     state.lastName = defaultState.lastName
-    state.email = defaultState.email
+    // state.email = defaultState.email
     state.password = defaultState.password
-    state.passwordconfirm = defaultState.passwordconfirm
+    state.passwordconfirm = defaultState.password
   }
   const resetErrors = (): void => {
     errors.firstName = null
@@ -35,42 +43,76 @@ const useSignup = () => {
     errors.email = null
     errors.password = null
     errors.passwordconfirm = null
+    errors.others = null
+  }
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    return emailRegex.test(String(email).toLowerCase())
   }
 
   const signupValidation = (): boolean => {
     resetErrors()
-    
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     if (state.firstName === null) {
-      errors.firstName = "Is required"
+      errors.firstName = 'Is required'
     }
     if (state.lastName === null) {
-      errors.lastName = "Is required"
+      errors.lastName = 'Is required'
     }
-    if (!emailRegex.test(String(state.email).toLowerCase())) {
-      errors.email = "Must be an email"
+    if (!validateEmail(String(state.email))) {
+      errors.email = 'Must be an email'
     }
     if (state.password === null || state.password.length <= 8) {
-      errors.password = "Is required and be longer than 8 characters"
+      errors.password = 'Is required and be longer than 8 characters'
     }
     if (state.passwordconfirm !== state.password) {
-      errors.passwordconfirm = "Must be same as password"
+      errors.passwordconfirm = 'Must be same as password'
     }
 
     return errors.email === null && errors.password === null && errors.passwordconfirm === null
   }
 
   /**
-   * Saves the user profile via the service
+   * Sends email verification
    */
-  const saveUserProfile = async (user: InterfaceLoginResponse): Promise<void> => {
-    const { login } = useUser()
-    await login(user)
-  }
+  const sendEmailVerification = (email: string) => {
+    if (!validateEmail(email)) {
+      return
+    }
 
-  const redirectToDashboard = (): void => {
-    void Router.push('/dashboard')
+    completed.value = false
+    loading.value = true
+
+    axios
+      .post(String(process.env.apiUrl) + '/auth/send-email-confirmation', {
+        email: email.toLowerCase(),
+      })
+      .then(() => {
+        completed.value = true
+      })
+      .catch((error: AxiosError) => {
+        console.log(error.response)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const loginErrors: InterfaceLoginError = (error.response && error.response.data) ? error.response.data : null
+
+        if (loginErrors !== null) {
+          for (const single of loginErrors.data) {
+            for (const message of single.messages) {
+              switch (message.id) {
+                default:
+                  errors.others = message.message
+                  break
+              }
+            }
+          }
+        }
+      })
+      .finally(() => {
+        loading.value = false
+        resetErrors
+      })
   }
 
   /**
@@ -86,28 +128,31 @@ const useSignup = () => {
     loading.value = true
 
     axios
-      .post(String(process.env.apiUrl) + 'auth/local/register', {
+      .post(String(process.env.apiUrl) + '/auth/local/register', {
         firstName: state.firstName,
         lastName: state.lastName,
         username: state.email?.toLowerCase(),
         email: state.email?.toLowerCase(),
         password: state.password,
       })
-      .then((response: AxiosResponse) => {
+      .then(() => {
+        completed.value = true
         reset()
-        void saveUserProfile(response.data)
-        redirectToDashboard()
       })
       .catch((error: AxiosError) => {
-        loading.value = false
         // Handle error.
         console.log('An error occurred:', error.response)
+      })
+      .finally(() => {
+        loading.value = false
       })
   }
 
   return {
+    completed,
     errors,
     loading,
+    sendEmailVerification,
     signup,
     state
   }

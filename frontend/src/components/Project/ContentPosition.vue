@@ -1,10 +1,10 @@
 <template>
-<q-card flat bordered class="q-mb-lg volunteer-position">
+<q-card class="q-mb-lg volunteer-position">
   <q-card-section>
     <div class="row">
       <div class="q-pt-xs col-12 col-sm-8 col-md-9 col-lg-10">
-        <h4 class="q-mb-sm"><strong>{{ position.title }}</strong></h4>
-        <div class="text-caption text-grey-7 q-mb-sm">{{ position.commitment }}</div>
+        <h3 class="q-mb-sm"><strong>{{ position.title }}</strong></h3>
+        <div class="text-accent q-mb-sm">{{ position.commitment }}</div>
         <div class="q-mb-md"
           v-if="position && Array.isArray(position.skills)"
           >
@@ -17,26 +17,31 @@
           </q-chip>
         </div>
         <div
-          :class="'q-mb-sm description ' + ((expanded === true) ? 'expanded' : '')"
+          :class="'q-mb-lg description q-pr-lg text-grey-9 ' + ((expanded === true) ? 'expanded' : '')"
           >
           {{ position.description }}
         </div>
         <a
           href="#"
           @click="toggleExpand"
-          class="text-grey-6">
-          Read More
+          class="text-grey-7"
+          style="text-decoration: none">
+          READ MORE
         </a>
       </div>
 
       <div class="flex flex-center text-right col-12 col-sm-4 col-md-3 col-lg-2">
         <q-btn
+          type="a"
+          target="_blank"
           unelevated
+          outline
           color="accent"
           label="connect"
           class="q-px-lg connect"
           size="md"
           rounded
+          :href="`mailto:${project.user.email}?subject=Collaboration on ${project.title} as ${position.title}`"
           />
       </div>
     </div>
@@ -50,6 +55,9 @@ import { defineComponent, ref } from '@vue/composition-api'
 export default defineComponent({
   name: 'ProjectContentPosition',
   props: {
+    project: {
+      type: Object,
+    },
     position: {
       type: Object
     }

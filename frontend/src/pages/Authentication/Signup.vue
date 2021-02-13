@@ -14,8 +14,8 @@
 
       <q-separator />
 
-      <q-card-actions horizontal class="card-actions justify-center q-py-lg q-px-md">
-        By signing up, you agree to our terms of use, privacy policy, and cookie policy. 
+      <q-card-actions horizontal class="card-actions q-py-lg q-px-md">
+        By signing up, you agree and consent to our <router-link to="/terms">terms of use</router-link>&nbsp;and&nbsp;<router-link to="/privacy">privacy policy</router-link>
       </q-card-actions>
     </q-card>
   </q-page>
@@ -45,6 +45,6 @@ export default defineComponent({
   }
 }
 .card-actions {
-  max-width: 360px;
+  max-width: 400px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 <q-list
-  v-if="authenticated"
+  v-if="user && user.email !== null"
   >
   <q-item to="/dashboard" exact>
     <q-item-section>
@@ -32,21 +32,9 @@ import { useUser } from '../../../services/user'
 export default defineComponent({
   name: 'DrawerBottom',
   setup () {
-    const authenticated = ref(false)
     const { user } = useUser()
 
-    authenticated.value = isAuthenticated()
-
-    // Watch effect
-    watch(
-      () => user.jwt,
-      () => {
-        authenticated.value = isAuthenticated()
-      }
-    )
-
     return {
-      authenticated,
       user
     }
   }

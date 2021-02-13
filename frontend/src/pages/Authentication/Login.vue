@@ -8,6 +8,7 @@
 
       <q-card-section class="q-pt-md q-mb-md">
         <AuthenticationLoginForm />
+        <div class="q-pt-md text-body2"><router-link to="/forgot-password">Forgot your password?</router-link></div>
       </q-card-section>
 
       <q-separator />

@@ -2,6 +2,7 @@
   <q-page class="column items-center">
     <header-banner />
     <div class="q-pa-xl full-width column items-center">
+      <q-separator inset />
       <how-it-works />
       <q-separator inset />
       <latest-campaigns />

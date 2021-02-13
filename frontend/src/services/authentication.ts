@@ -1,15 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { reactive, Ref, ref } from '@vue/composition-api'
 import { AxiosResponse, AxiosError } from 'axios'
 import { Plugins, StoragePlugin } from '@capacitor/core'
 import axios from 'axios'
 
-import { InterfaceLoginError, InterfaceLoginResponse, InterfaceStateAuthenticationLogin } from 'src/interfaces'
+import { InterfaceAuthenticationErrors, InterfaceLoginError, InterfaceLoginResponse, InterfaceStateAuthenticationLogin } from 'src/interfaces'
 import { Router } from 'src/router'
 import { useUser } from './user'
 
 const defaultAuthenticationLoginState: InterfaceStateAuthenticationLogin = {
   email: null,
   password: null,
+}
+const defaultAuthenticationErrors: InterfaceAuthenticationErrors = {
+  email: null,
+  password: null,
+  passwordConfirmation: null,
+  code: null,
+  others: null,
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -48,9 +56,10 @@ const isAuthenticated = async (): Promise<boolean> => {
 
 const useAuthentication = () => { 
   const loading: Ref<boolean> = ref(false)
+  const resetEmailSent: Ref<boolean> = ref(false)
 
-  const errors: InterfaceStateAuthenticationLogin = reactive({
-    ...defaultAuthenticationLoginState
+  const errors: InterfaceAuthenticationErrors = reactive({
+    ...defaultAuthenticationErrors
   })
 
   const state = reactive({
@@ -63,6 +72,8 @@ const useAuthentication = () => {
   const resetErrors = (): void => {
     errors.email = null
     errors.password = null
+    errors.passwordConfirmation = null
+    errors.code = null
   }
 
   /**
@@ -88,7 +99,7 @@ const useAuthentication = () => {
     loading.value = true
 
     axios
-      .post(String(process.env.apiUrl) + 'auth/local', {
+      .post(String(process.env.apiUrl) + '/auth/local', {
         identifier: state.email?.toLowerCase(),
         password: state.password,
       })
@@ -112,6 +123,12 @@ const useAuthentication = () => {
                 case 'Auth.form.error.password.provide':
                   errors.password = message.message
                   break
+                case 'Auth.form.error.confirmed':
+                  errors.others = `${message.message}<br/><small><a href="/verify-email?email=${String(state.email)}">Resend Email?</a></small>`
+                  break
+                default:
+                  errors.others = message.message
+                  break
               }
             }
           }
@@ -119,10 +136,65 @@ const useAuthentication = () => {
       })
   }
 
+  /**
+   * Reset Password
+   */
+  const resetPassword = (
+    code: string,
+    password: string,
+    passwordConfirmation: string,
+  ) => {
+    resetErrors()
+    loading.value = true
+
+    axios
+      .post(String(process.env.apiUrl) + '/auth/reset-password', {
+        code,
+        password,
+        passwordConfirmation,
+      })
+      .then((response: AxiosResponse) => {
+        saveUserProfile(response.data)
+        redirectToDashboard()
+      })
+      .catch((error: AxiosError) => {
+        console.error(error.response?.data?.data[0].messages[0])
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        errors.passwordConfirmation = error.response?.data?.data[0].messages[0].message
+        loading.value = false
+      })
+  }
+
+  /**
+   * Forgot Password
+   */
+  const forgotPassword = (email: string) => {
+    resetErrors()
+    loading.value = true
+
+    axios
+      .post(String(process.env.apiUrl) + '/auth/forgot-password', {
+        email: email.toLowerCase()
+      })
+      .then((response: AxiosResponse) => {
+        console.log(response)
+        resetEmailSent.value = true
+      })
+      .catch((error: AxiosError) => {
+        console.error(error)
+      })
+      .finally(() => {
+        loading.value = false
+      })
+  }
+
   return {
     errors,
+    forgotPassword,
     loading,
     login,
+    resetEmailSent,
+    resetPassword,
     state,
     storeAuthenticationToken
   }

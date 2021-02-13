@@ -6,23 +6,27 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "strapi build --clean",
     "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
-    "strapi": "3.1.6",
-    "strapi-admin": "3.1.6",
-    "strapi-utils": "3.1.6",
-    "strapi-plugin-content-type-builder": "3.1.6",
-    "strapi-plugin-content-manager": "3.1.6",
-    "strapi-plugin-users-permissions": "3.1.6",
-    "strapi-plugin-email": "3.1.6",
-    "strapi-plugin-upload": "3.1.6",
-    "strapi-connector-bookshelf": "3.1.6",
-    "knex": "<0.20.0",
+    "knex": "^0.21.6",
+    "pg": "^8.4.1",
     "sqlite3": "latest",
-    "pg": "^8.4.0"
+    "strapi": "^3.4.6",
+    "strapi-admin": "^3.4.6",
+    "strapi-connector-bookshelf": "3.4.6",
+    "strapi-plugin-comments": "^1.0.1-beta.6",
+    "strapi-plugin-content-manager": "3.4.6",
+    "strapi-plugin-content-type-builder": "3.4.6",
+    "strapi-plugin-email": "3.4.6",
+    "strapi-plugin-email-designer": "^0.1.9",
+    "strapi-plugin-upload": "3.4.6",
+    "strapi-plugin-users-permissions": "3.4.6",
+    "strapi-provider-email-sendgrid": "^3.4.6",
+    "strapi-provider-upload-aws-s3": "^3.4.6",
+    "strapi-utils": "3.4.6"
   },
   "author": {
     "name": "A Strapi developer"

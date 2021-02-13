@@ -1,12 +1,17 @@
 <template>
   <q-page>
-    <div class="container">
+    <div
+      v-if="project !== undefined"
+      class="container"
+      >
       <ProjectHeader
         :project="project"
         />
       <ProjectContent
         :project="project"
         />
+    </div>
+    <div v-else>
     </div>
   </q-page>
 </template>
@@ -27,17 +32,18 @@ export default defineComponent({
     ProjectContent
   },
   setup (props, ctx) {
+    const id = ctx.root.$route.params.projectId
     const loading = ref(true)
     const project: Ref<InterfaceProject | undefined> = ref()
 
-    const { state, getProjects } = useProjects()
+    const { state, getProject, getProjects } = useProjects()
 
     const updateProject = () => {
-      project.value = state.projects.find(project => project.id === Number(ctx.root.$route.params.projectId))
+      project.value = state.projects.find(project => String(project.id) === ctx.root.$route.params.projectId)
     }
 
-    onBeforeMount(() => {
-      getProjects()
+    onBeforeMount(async () => {
+      await getProject(ctx.root.$route.params.projectId)
       updateProject()
     })
 

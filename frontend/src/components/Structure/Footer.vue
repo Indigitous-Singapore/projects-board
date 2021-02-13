@@ -1,5 +1,6 @@
 <template>
-<q-footer class="bg-grey-9 text-white">
+<q-footer class="bg-grey-9 text-white visible-xs">
+  <!--
   <div class="row items-center bg-grey-4 text-grey-9 justify-center" style="height:348px;">
     <div class="col-10">
       <div class="row items-start">
@@ -49,13 +50,14 @@
       </div>
     </div>
   </div>
+  -->
   <q-toolbar>
     <div class="col-1"></div>
-    <span class="q-mx-md text-caption text-grey-5">© Copyright 2020</span>
+    <span class="q-mx-md text-caption text-grey-5">&copy; Copyright Indigitous Singapore {{ currentYear }}</span>
     <q-separator dark vertical inset spaced="md" class="q-my-md" />
-    <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md text-caption" />
+    <q-btn to="/terms" color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Terms and Conditions" class="q-mx-md text-caption" />
     <q-separator dark vertical inset spaced="md" class="q-my-md text-caption" />
-      <q-btn color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md text-caption" />
+    <q-btn to="/privacy" color="transparent" text-color="grey-5" dense flat no-caps padding="sm" label="Privacy" class="q-mx-md text-caption" />
   </q-toolbar>
 </q-footer>
 </template>
@@ -67,7 +69,9 @@ export default defineComponent({
   name: 'Footer',
   setup () {
     const mailingList = ref('')
+    const currentYear = new Date().getFullYear()
     return {
+      currentYear,
       mdiInstagram,
       mdiFacebook,
       mdiTwitter,

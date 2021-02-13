@@ -30,7 +30,7 @@
       <div class="absolute-bottom bg-transparent">
         <img class="logo" src="../../../assets/logo.png">
         <q-avatar size="56px" class="q-mb-sm">
-          <img :src="user.displayPictureUrl || 'https://api.adorable.io/avatars/500/' + user.email + '@adorable.png'">
+          <img :src="user.displayPictureUrl">
         </q-avatar>
         <div class="text-weight-bold text-dark">{{ user.firstName }}&nbsp;{{ user.lastName }}</div>
         <div class="text-dark"><small>{{ user.email }}</small></div>
@@ -61,15 +61,15 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .logo {
-  height: 20px;
+  height: 50px;
   margin-bottom: 20px;
   display: block;
 }
 .drawer-scroll-area {
-  height: calc(100% - 190px);
-  margin-top: 190px;
+  height: calc(100% - 220px);
+  margin-top: 220px;
 }
 .drawer-profile {
-  height: 190px;
+  height: 220px;
 }
 </style>

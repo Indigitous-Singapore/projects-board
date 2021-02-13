@@ -5,7 +5,7 @@
     <h3 class="text-grey-7 md-hide lg-hide xl-hide">{{ project.caption }}</h3>
     <q-img
       :ratio="16/9"
-      :src="project.displayPictureUrl" 
+      :src="project.displayPictureUrl.url" 
       :alt="project.title"
       />
   </div>
@@ -14,9 +14,9 @@
     <h3 class="text-grey-7 xs-hide sm-hide">{{ project.caption }}</h3>
 
     <div class="row items-center">
-      <img
+      <q-img
         class="flex author-displayPicture"
-        :src="project.user.displayPictureUrl"
+        :src="project.user.displayPictureUrl.url"
         :alt="project.user.firstName"
         />
       <h5 class="flex author-name q-mb-none q-pl-md">
@@ -24,25 +24,31 @@
       </h5>
     </div>
 
-    <div class="row q-pt-lg">
+    <div
+      v-if="lookingForSkills.length > 0"
+      class="row q-pt-lg">
       <div>
         <h5 class="q-mb-none"><b>Looking for</b></h5>
-        <q-chip class="q-ml-none q-px-lg q-py-md">
-          Developer
-        </q-chip>
-        <q-chip class="q-px-lg q-py-md">
-          Designer
+        <q-chip
+          v-for="(skill) in lookingForSkills"
+          :key="skill"
+          class="q-ml-none q-px-lg q-py-md"
+          >
+          {{ skill }}
         </q-chip>
       </div>
     </div>
 
     <div class="row q-pt-lg">
       <q-btn
+        type="a"
+        target="_blank"
         class="btn-collaborate"
         rounded
         unelevated
         color="accent"
         label="Collaborate"
+        :href="`mailto:${project.user.email}?subject=I would like to collaborate with you on ${project.title}`"
         />
     </div>
   </div>
@@ -50,7 +56,12 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { defineComponent } from '@vue/composition-api'
+import _ from 'lodash'
+import { InterfaceProjectPosition } from 'src/interfaces';
+import config from '../../config/config'
 
 export default defineComponent({
   name: 'ProjectHeader',
@@ -60,6 +71,19 @@ export default defineComponent({
       default: () => {
         return {}
       }
+    }
+  },
+  setup(props) {
+    const lookingForSkills = new Set()
+
+    props.project.openPositions.forEach((position: InterfaceProjectPosition) => {
+      lookingForSkills.add(_.startCase(position.skills))
+    })
+    console.log(Array.from(lookingForSkills))
+
+    return {
+      config,
+      lookingForSkills: Array.from(lookingForSkills)
     }
   }
 });

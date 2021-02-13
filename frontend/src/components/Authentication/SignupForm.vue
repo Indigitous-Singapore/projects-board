@@ -7,6 +7,22 @@
     size="5em"
   />
 </div>
+<div
+  class="flex text-center column"
+  v-else-if="completed">
+  <q-card
+    class="q-px-md q-pt-xl q-pb-lg bg-grey-2"
+    flat bordered
+    style="max-width: 380px"
+    >
+    <h5 class="text-accent"><b>Verify your email address</b></h5>
+    <p>We sent a verification email to:</p>
+    <p><b>{{ state.email }}</b></p>
+    <p class="q-mb-xl">Check your email (and your spam), then click on the verification link to continue</p>
+
+    <a :href="`/verify-email?email=${state.email}`" class="text-accent text-bold" style="text-decoration: none">Resend Email</a>
+  </q-card>
+</div>
 <q-form
   v-else
   @submit="signup"
@@ -99,8 +115,9 @@ import { useSignup } from '../../services/signup'
 export default defineComponent({
   name: 'AuthenticationSignupForm',
   setup () {
-    const { loading, state, signup, errors } = useSignup()
+    const { completed, loading, state, signup, errors } = useSignup()
     return {
+      completed,
       errors,
       loading,
       signup,

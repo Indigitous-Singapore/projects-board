@@ -1,82 +1,88 @@
 <template>
-  <div class="full-width">
-    <q-carousel
-      v-model="slide"
-      swipeable
-      animated
-      arrows
-      navigation
-      infinite
-      height="50vh"
-      padding
-    >
-      <q-carousel-slide name="1" class="" img-src="~assets/landingbanner.jpg" style="background-color: rgba(0,0,0,.5);background-blend-mode: multiply;}">
-        <div class="row text-white items-center fit">
-          <div class="offset-md-2 offset-xs-1 col-xs-10 col-md-4" style="max-width:500px;">
-            <h1 class="text-weight-bold q-mb-md banner-h1">
-              Advancing God's kingdom in the digital space
-            </h1>
-            <p class="q-mb-lg banner-p" style="max-width:444px;">
-              Join in the pursuit of digital missional projects through a connected and collaborative community 
-            </p>
-            <div class="row justify-xs-between" style="max-width:401px">
-              <q-btn color="accent" label="Explore" rounded size="1em" class="q-mr-md-lg q-mr-sm-sm" style="width:45%" />
-              <q-btn color="grey-4" text-color="accent" label="About" rounded size="1em" style="width:45%" />
-            </div>
-          </div>
+  <div id="header-banner" class="container">
+    <div class="row">
+      <div id="header-text" class="column col-sm-12 col-md-6 justify-center">
+        <h1 class="q-mb-md">Advancing God's kingdom in the digital&nbsp;space</h1>
+        <p class="text-grey-9">
+          Connecting Harvest to Labourers in the&nbsp;Digital&nbsp;Space
+        </p>
+        <img
+          class="img-responsive q-pa-md sm-hide md-hide lg-hide xl-hide"
+          alt="Launchpad - collaborate"
+          src="/assets/collaborate.png"
+          />
+        <div class="q-mt-xl justify-xs-between" style="max-width:420px">
+          <q-btn color="accent" to="/explore" unelevated label="Explore" rounded size="1em" class="q-mr-md-lg q-mr-sm-sm" style="width:45%" />
+          <q-btn color="grey-4" @click="goTo" flat text-color="accent" label="LEARN MORE" rounded size="1em" style="width:45%" />
         </div>
-      </q-carousel-slide>
-      <q-carousel-slide name="2">
-        <q-skeleton height="150px" />
-      </q-carousel-slide>
-      <q-carousel-slide name="3">
-        <q-skeleton height="150px" />
-      </q-carousel-slide>
-
-      <q-carousel-slide name="4">
-        <q-skeleton height="150px" />
-      </q-carousel-slide>
-    </q-carousel>
+      </div>
+      <div class="xs-hide flex column col-sm-12 col-md-6 q-pa-md">
+        <img
+          class="img-responsive q-pa-md"
+          alt="Launchpad - collaborate"
+          src="/assets/collaborate.png"
+          />
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
+import { scroll } from 'quasar'
 
 export default defineComponent({
   name: 'HeaderBannerSection',
   components: {
   },
   setup () {
-    const slide = ref('1')
+    const { getScrollTarget, setScrollPosition } = scroll
+    const goTo = () => {
+      const el: HTMLElement | null = document.getElementById('how-it-works')
+      
+      if (el) {
+        const target = getScrollTarget(el)
+        const offset = el.offsetTop
+        const duration = 150
+        setScrollPosition(target, offset, duration)
+      }
+    }
     return {
-      slide
+      goTo
     }
   }
 })
 </script>
 <style lang="scss" scoped>
-body.screen--xs {
-  .banner-h1 {
-    font-size: 1.5em;
-    line-height: 1.5em;
-    text-align: center;
+#header-banner {
+  margin: 3em 0 1.5em 0;
+}
+#header-text {
+  h1 {
+    line-height:1.25em;
+    font-size: 3.1em;
+    font-weight: 600;
   }
-  .banner-p {
-    font-size: 1em;
-    line-height: 1em;
-    text-align: center
+  p {
+    font-size: 1.65em;
   }
 }
-body.screen--md {
-  .banner-h1 {
-    font-size: 2.3em;
-    line-height: 1.3em;
-    text-align: left;
+.img-responsive {
+  max-width: 100%
+}
+
+@media (max-width: 991px) {
+  #header-banner {
+    margin: 0 0 1em 0;
   }
-  .banner-p {
-    font-size: 1.3em;
-    line-height: 1em;
-    text-align: left
+  #header-text {
+    h1 {
+      line-height:1.25em;
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1.25em;
+    }
   }
 }
 </style>

@@ -20,6 +20,7 @@
           <div class="gt-sm row">
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="ABOUT" to="/about" />
             <q-btn color="transparent" text-color="black" flat stretch padding="lg lg" label="EXPLORE" to="/explore" />
+            <!--
             <q-input 
               v-model="search"
               clearable
@@ -33,9 +34,11 @@
                 <q-icon name="search" color="grey-9" />
               </template>
             </q-input>
+            -->
           </div>
         </q-toolbar>
-        <q-separator vertical inset />
+        <NavbarAppLauncher />
+        <q-separator vertical inset/>
         <NavbarRight />
       </div>
     </q-header>
@@ -54,6 +57,7 @@
 
 <script lang="ts">
 import ComponentDrawer from 'components/Structure/MainDrawer/Drawer.vue'
+import NavbarAppLauncher from 'components/Structure/NavbarAppLauncher.vue'
 import NavbarRight from 'components/Structure/NavbarRight.vue'
 import Footer from 'components/Structure/Footer.vue'
 import { mdiInstagram , mdiFacebook, mdiTwitter } from '@quasar/extras/mdi-v5'
@@ -64,6 +68,7 @@ export default defineComponent({
   components: {
     ComponentDrawer,
     Footer,
+    NavbarAppLauncher,
     NavbarRight,
   },
   setup () {
