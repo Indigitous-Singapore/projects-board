@@ -25,3 +25,4 @@ jobs:
             pm2 del launchpad
             NODE_TLS_REJECT_UNAUTHORIZED='0' NODE_ENV=production pm2 start server.js -f --name launchpad
             rm -rf ../projects-board
+            pm2 save
