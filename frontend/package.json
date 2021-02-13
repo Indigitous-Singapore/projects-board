@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^2.4.2",
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.9.17",
     "@types/dompurify": "^2.0.4",
     "@types/hapi__joi": "^17.1.6",
     "@types/joi": "^14.3.4",
@@ -29,12 +29,12 @@
     "marked": "^2.0.0",
     "md5": "^2.3.0",
     "qs": "^6.9.4",
-    "quasar": "^1.0.0",
+    "quasar": "^1.15.0",
     "sanitize-html": "^2.1.1",
     "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0",
+    "@quasar/app": "^2.1.14",
     "@types/node": "^10.17.15",
     "@types/sanitize-html": "^1.27.0",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
