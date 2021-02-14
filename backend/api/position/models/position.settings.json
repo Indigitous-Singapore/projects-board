@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Positions",
+  "info": {
+    "name": "Position"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "commitment": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "skills": {
+      "collection": "skill",
+      "via": "positions",
+      "dominant": true
+    }
+  }
+}

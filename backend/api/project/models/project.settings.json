@@ -59,11 +59,6 @@
       "model": "user",
       "via": "projects"
     },
-    "openPositions": {
-      "type": "component",
-      "repeatable": true,
-      "component": "positions.open-positions"
-    },
     "displayed": {
       "type": "boolean",
       "default": true,
