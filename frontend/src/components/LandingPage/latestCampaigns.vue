@@ -29,18 +29,17 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive, watch } from '@vue/composition-api'
+import { defineComponent, onMounted } from '@vue/composition-api'
 import ProjectCard from '../Common/ProjectCard.vue'
 import config from '../../config/config'
 import { useProjects } from '../../services/projects'
-import { InterfaceProject } from 'src/interfaces'
 
 export default defineComponent({
   name: 'LatestCampaignSection',
   components: {
     ProjectCard
   },
-  setup (props, ctx) {
+  setup () {
     const { state, getProjects } = useProjects()
 
     onMounted(async () => {

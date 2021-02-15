@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios, { AxiosResponse } from 'axios'
 import { Ref, ref } from '@vue/composition-api'
-import _ from 'lodash'
 
 import config from '../config/config'
 
@@ -48,7 +47,7 @@ const useFields = () => {
     const fields: InterfaceField[] | undefined = await fetchFields()
 
     if (fields === undefined) {
-      console.error('Fieldss is undefined')
+      console.error('Fields are undefined')
     } else {
       state.value = [...fields]
     }
