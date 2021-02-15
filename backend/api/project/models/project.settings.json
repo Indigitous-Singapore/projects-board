@@ -24,11 +24,6 @@
       "required": true,
       "maxLength": 120
     },
-    "comments": {
-      "plugin": "comments",
-      "collection": "comment",
-      "via": "related"
-    },
     "displayPictureUrl": {
       "model": "file",
       "via": "related",
@@ -80,6 +75,9 @@
     },
     "fields": {
       "collection": "field"
+    },
+    "positions": {
+      "collection": "position"
     }
   }
 }
