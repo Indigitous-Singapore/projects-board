@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios, { AxiosResponse } from 'axios'
 import { Ref, ref } from '@vue/composition-api'
-import _ from 'lodash'
 
 import config from '../config/config'
 

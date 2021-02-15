@@ -11,7 +11,7 @@ import { useUser } from './services/user'
 
 export default defineComponent({
   name: 'App',
-  setup (props, ctx) {
+  setup () {
     const { getProfile } = useUser()
 
     onBeforeMount(async () => {

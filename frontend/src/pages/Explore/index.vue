@@ -83,12 +83,10 @@
 </template>
 
 <script lang="ts">
-import _ from 'lodash'
-import { defineComponent, onBeforeMount, reactive, ref, Ref, watch } from '@vue/composition-api'
+import { defineComponent, onBeforeMount, ref, Ref, watch } from '@vue/composition-api'
 import { useProjects } from '../../services/projects'
 import { useCauses } from '../../services/causes'
 import { useFields } from '../../services/fields'
-import { InterfaceProject } from 'src/interfaces'
 import ExploreBanner from '../../components/Explore/ExploreBanner.vue'
 import ExploreContent from '../../components/Explore/ExploreContent.vue'
 import ExploreFilters from '../../components/Explore/ExploreFilters.vue'
@@ -103,10 +101,9 @@ export default defineComponent({
     ExploreFilters,
     ExploreSearch
   },
-  setup (props, ctx) {
+  setup () {
     const loading = ref(true)
     const dialogIsOpen = ref(false)
-    const defaultStateCauses: Record<string, boolean> = {}
     const causes: Ref<Record<string, string>> = ref({})
     const fields: Ref<Record<string, string>> = ref({})
     const { 

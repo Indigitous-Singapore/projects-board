@@ -43,9 +43,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, Ref, ref, watch } from '@vue/composition-api'
-import { useProjects } from '../../services/projects'
-import { InterfaceProject } from 'src/interfaces'
+import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'ExploreFilters',
