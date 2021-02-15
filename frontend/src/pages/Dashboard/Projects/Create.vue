@@ -4,7 +4,9 @@
       title="Create New Project"
       />
     <div class="row">
-      <div class="column col-xs-12">
+      <div class="column col-md-4">
+      </div>
+      <div class="column col-md-8">
         <q-stepper
           v-model="step"
           vertical
@@ -54,21 +56,7 @@
             :nextStep="nextStep"
             :previousStep="previousStep"
             />
-
-          <q-step
-            :name="3"
-            title="Create an ad"
-            icon="add_comment"
-          >
-            Try out different ad text to see what brings in the most customers, and learn how to
-            enhance your ads using features like ad extensions. If you run into any problems with
-            your ads, find out how to tell if they're running and how to resolve approval issues.
-
-            <q-stepper-navigation>
-              <q-btn color="primary" label="Finish" />
-              <q-btn flat @click="previousStep" color="primary" label="Back" class="q-ml-sm" />
-            </q-stepper-navigation>
-          </q-step>
+            
         </q-stepper>
       </div>
     </div>

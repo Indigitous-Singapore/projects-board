@@ -3,7 +3,7 @@
   :name="name"
   title="Before We Begin"
   :prefix="name"
-  :done="step > 1"
+  :done="step && step > 1"
 >
   <p>We are currently in Beta, and curating a set of great Digital Missions to share with our community. To submit a project, please fill in the following details.</p>
   <p>This form will take approximately 15 minutes to complete</p>
@@ -14,9 +14,12 @@
       <li>Should not be purely profit-driven</li>
     </ol>
   </p>
-  <q-stepper-navigation>
-    <q-btn @click="nextStep" color="primary" label="Continue" />
-  </q-stepper-navigation>
+
+  <StepperNavigation
+    :step="step"
+    :nextStep="nextStep"
+    :previousStep="previousStep"
+    />
 </q-step>
 </template>
 
@@ -24,8 +27,13 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 
+import StepperNavigation from './StepperNavigation.vue'
+
 export default defineComponent({
   name: 'BeforeWeBegin',
+  components: {
+    StepperNavigation,
+  },
   props: {
     name: {
       type: Number
