@@ -71,7 +71,7 @@ export default defineComponent({
     Positions,
     WhatWeDo,
   },
-  setup (_props, ctx) {
+  setup () {
     const { user } = useUser()
     const currentStep: Ref<number> = ref(0)
 
