@@ -25,8 +25,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from '@vue/composition-api'
-import { isAuthenticated } from '../../../services/authentication'
+import { defineComponent } from '@vue/composition-api'
 import { useUser } from '../../../services/user'
 
 export default defineComponent({

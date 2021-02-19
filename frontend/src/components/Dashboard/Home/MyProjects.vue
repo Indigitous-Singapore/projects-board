@@ -39,7 +39,7 @@ export default defineComponent({
   components: {
     ProjectCardHorizontal,
   },
-  setup (props, ctx) {
+  setup () {
     const { user } = useUser()
     const { state, getProjects } = useProjects()
 

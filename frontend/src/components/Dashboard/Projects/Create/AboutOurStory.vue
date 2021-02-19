@@ -53,7 +53,7 @@ export default defineComponent({
       type: Number
     },
   },
-  setup(props) {
+  setup() {
     const ourStory: Ref<string> = ref('')
 
     return {
