@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, watch } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import { useUser } from '../../services/user'
 
 export default defineComponent({

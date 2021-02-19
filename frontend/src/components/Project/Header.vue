@@ -60,7 +60,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { defineComponent } from '@vue/composition-api'
 import _ from 'lodash'
-import { InterfaceProjectPosition } from 'src/interfaces';
+import { InterfaceProjectPosition, InterfaceSkill } from 'src/interfaces';
 import config from '../../config/config'
 
 export default defineComponent({
@@ -77,9 +77,10 @@ export default defineComponent({
     const lookingForSkills = new Set()
 
     props.project.openPositions.forEach((position: InterfaceProjectPosition) => {
-      lookingForSkills.add(_.startCase(position.skills))
+      position.skills?.forEach((skill: InterfaceSkill) => {
+        lookingForSkills.add(_.startCase(skill.title))
+      })
     })
-    console.log(Array.from(lookingForSkills))
 
     return {
       config,

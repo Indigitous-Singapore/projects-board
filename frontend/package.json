@@ -6,6 +6,7 @@
   "author": "indigitious<developer@indigitous.sg>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --ext .js,.ts,.vue ./src",
     "lintfix": "eslint --fix --ext .js,.ts,.vue ./src",
@@ -14,12 +15,6 @@
   "dependencies": {
     "@capacitor/core": "^2.4.2",
     "@quasar/extras": "^1.9.17",
-    "@types/dompurify": "^2.0.4",
-    "@types/hapi__joi": "^17.1.6",
-    "@types/joi": "^14.3.4",
-    "@types/lodash": "^4.14.162",
-    "@types/marked": "^1.1.0",
-    "@types/md5": "^2.2.1",
     "@vue/composition-api": "^0.6.4",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
@@ -36,6 +31,12 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.1.14",
+    "@types/dompurify": "^2.0.4",
+    "@types/hapi__joi": "^17.1.6",
+    "@types/joi": "^14.3.4",
+    "@types/lodash": "^4.14.162",
+    "@types/marked": "^1.1.0",
+    "@types/md5": "^2.2.1",
     "@types/node": "^10.17.15",
     "@types/sanitize-html": "^1.27.0",
     "@typescript-eslint/eslint-plugin": "^3.3.0",

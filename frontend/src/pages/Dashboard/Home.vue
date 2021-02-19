@@ -106,7 +106,7 @@ export default defineComponent({
     ComponentDashboardProfileResetPassword,
     UnderConstruction
   },
-  setup (props, ctx) {
+  setup () {
     const { user } = useUser()
     const data = reactive({
       tab: 'project',

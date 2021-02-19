@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<div v-if="user" class="row">
   <div class="column col-xs-5 col-sm-4 col-md-3 col-lg-2">
     <img
       :src="user.displayPictureUrl"
@@ -23,7 +23,7 @@ import { useUser } from '../../../services/user'
 
 export default defineComponent({
   name: 'ComponentDashboardHomeHeader',
-  setup (props, ctx) {
+  setup () {
     const { user } = useUser()
 
     return {

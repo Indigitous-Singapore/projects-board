@@ -69,7 +69,7 @@ import { useUser } from '../../../services/user'
 
 export default defineComponent({
   name: 'ComponentDashboardProfilePersonal',
-  setup (props, ctx) {
+  setup () {
     const submitting: Ref<boolean> = ref(false)
     const formUser: Record<string, string> = reactive({
       firstName: '',
@@ -97,6 +97,7 @@ export default defineComponent({
         await updateProfile(formUser)
       } catch (error) {
         const err: AxiosError = (error as AxiosError)
+        console.error(err.message)
         alert('An error occurred.')
       }
       submitting.value = false

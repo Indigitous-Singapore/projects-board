@@ -89,7 +89,7 @@ export default defineComponent({
       type: Number
     },
   },
-  setup(props) {
+  setup() {
     const title: Ref<string> = ref('')
     const caption: Ref<string> = ref('')
 
