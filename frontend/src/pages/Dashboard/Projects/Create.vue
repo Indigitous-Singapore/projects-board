@@ -4,56 +4,43 @@
       title="Start A Project"
       />
     <div class="row">
-      <div class="column col-md-8">
+      <div class="column col-md-12">
         <q-stepper
-          v-model="step"
-          vertical
-          color="secondary"
+          v-model="currentStep"
+          ref="stepper"
+          done-color="green-9"
+          active-color="orange-8"
+          inactive-color="grey-5"
           animated
-          flat
-          class="q-pa-none"
         >
-          <BeforeWeBegin
-            :name="1"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
-
-          <AboutTheProject
-            :name="2"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
-
-          <AboutOurStory
-            :name="3"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
-
-          <WhatWeDo
-            :name="4"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
-
-          <Faqs
-            :name="5"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
-
-          <Positions
-            :name="6"
-            :step="step"
-            :nextStep="nextStep"
-            :previousStep="previousStep"
-            />
+          <q-step
+            v-for="(step, index) in steps"
+            :key="index"
+            :name="index"
+            :prefix="index"
+            :title="step.title"
+            :done="currentStep && currentStep > index"
+          >
+            <component v-bind:is="step.component" />
+          </q-step>
+          
+          <template v-slot:navigation>
+            <q-stepper-navigation>
+              <q-btn
+                @click="$refs.stepper.next()"
+                color="primary"
+                :label="currentStep === steps.length ? 'Finish' : 'Continue'"
+                />
+              <q-btn
+                v-if="currentStep > 0"
+                flat
+                color="primary"
+                @click="$refs.stepper.previous()"
+                label="Back"
+                class="q-ml-sm"
+                />
+            </q-stepper-navigation>
+          </template>
         </q-stepper>
       </div>
     </div>
@@ -86,14 +73,38 @@ export default defineComponent({
   },
   setup () {
     const { user } = useUser()
-    const step: Ref<number> = ref(1)
-    const nextStep = () => step.value++
-    const previousStep = () => step.value--
+    const currentStep: Ref<number> = ref(0)
+
+    const steps = [
+      {
+        title: 'Before We Begin',
+        component: BeforeWeBegin,
+      },
+      {
+        title: 'About The Project',
+        component: AboutTheProject,
+      },
+      {
+        title: 'About Our Story',
+        component: AboutOurStory,
+      },
+      {
+        title: 'What We Do',
+        component: WhatWeDo,
+      },
+      {
+        title: 'Faqs',
+        component: Faqs,
+      },
+      {
+        title: 'Positions',
+        component: Positions,
+      }
+    ]
 
     return {
-      nextStep,
-      previousStep,
-      step,
+      currentStep,
+      steps,
       user,
     }
   }
