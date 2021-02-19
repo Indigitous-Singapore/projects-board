@@ -5,7 +5,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { reactive } from '@vue/composition-api'
 import md5 from 'md5'
-import _ from 'lodash'
 import qs from 'qs'
 
 import config from '../config/config'

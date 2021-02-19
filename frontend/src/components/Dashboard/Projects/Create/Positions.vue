@@ -77,6 +77,7 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeMount, Ref, ref } from '@vue/composition-api'
+import { InterfaceProjectPosition } from 'src/interfaces';
 import StepperNavigation from './StepperNavigation.vue'
 
 export default defineComponent({
@@ -99,9 +100,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const positions: Ref<any> = ref([])
+    const positions: Ref<InterfaceProjectPosition[]> = ref([])
     const deletePosition = (positionIndex: number) => {
-      const newPositions = positions.value.filter((position, index) => index !== positionIndex)
+      const newPositions = positions.value.filter((_position: InterfaceProjectPosition, index: number) => index !== positionIndex)
       positions.value = newPositions
     }
     const addPosition = () => {
@@ -110,12 +111,19 @@ export default defineComponent({
         title: '',
         description: '',
         commitment: '',
+        active: true
       })
       positions.value = newPositions
     }
-    const updatePosition = (index, attribute, ev) => {
+    const updatePosition = (index: number, attribute: keyof InterfaceProjectPosition, ev: { target: { value: string } }) => {
       if (!positions.value[index]) addPosition()
-      positions.value[index][attribute] = ev.target.value
+      const subPosition: Record<string, string> = {}
+      subPosition[attribute] = ev.target.value
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      positions.value[index] = {
+        ...positions.value[index],
+        ...subPosition
+      }
     }
 
     onBeforeMount(() => {

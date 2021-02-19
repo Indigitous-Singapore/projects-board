@@ -52,7 +52,7 @@ export default defineComponent({
       type: Number
     },
   },
-  setup(props) {
+  setup() {
     const whatWeDo: Ref<string> = ref('')
 
     return {

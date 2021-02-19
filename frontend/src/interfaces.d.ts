@@ -92,12 +92,12 @@ export interface InterfaceStateProjects {
 }
 
 export interface InterfaceProjectPosition {
-  id: number;
+  id?: number | null;
   title: string;
   commitment: string;
-  skills?: string;
   description: string;
   active: boolean;
+  skills?: InterfaceSkill[];
 }
 
 export interface InterfaceCause {
@@ -116,6 +116,13 @@ export interface InterfaceField {
   'created_at': string;
   'updated_at': string;
   'image': InterfaceImage | null
+}
+
+export interface InterfaceSkill {
+  'id': number;
+  'title': string;
+  'created_at': string;
+  'updated_at': string;
 }
 
 export interface InterfaceProject {

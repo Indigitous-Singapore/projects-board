@@ -31,12 +31,11 @@ export default defineComponent({
     ProjectHeader,
     ProjectContent
   },
-  setup (props, ctx) {
-    const id = ctx.root.$route.params.projectId
+  setup (_props, ctx) {
     const loading = ref(true)
     const project: Ref<InterfaceProject | undefined> = ref()
 
-    const { state, getProject, getProjects } = useProjects()
+    const { state, getProject } = useProjects()
 
     const updateProject = () => {
       project.value = state.projects.find(project => String(project.id) === ctx.root.$route.params.projectId)

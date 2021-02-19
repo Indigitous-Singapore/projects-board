@@ -48,7 +48,7 @@ export default defineComponent({
       type: Number
     },
   },
-  setup(props) {
+  setup() {
     return {
     }
   }

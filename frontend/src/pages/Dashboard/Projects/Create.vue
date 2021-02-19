@@ -1,11 +1,9 @@
 <template>
   <q-page class="container">
     <DashboardHeader
-      title="Create New Project"
+      title="Start A Project"
       />
     <div class="row">
-      <div class="column col-md-4">
-      </div>
       <div class="column col-md-8">
         <q-stepper
           v-model="step"
@@ -56,7 +54,6 @@
             :nextStep="nextStep"
             :previousStep="previousStep"
             />
-            
         </q-stepper>
       </div>
     </div>
@@ -87,9 +84,9 @@ export default defineComponent({
     Positions,
     WhatWeDo,
   },
-  setup (_props, _ctx) {
+  setup () {
     const { user } = useUser()
-    const step: Ref<number> = ref(6)
+    const step: Ref<number> = ref(1)
     const nextStep = () => step.value++
     const previousStep = () => step.value--
 

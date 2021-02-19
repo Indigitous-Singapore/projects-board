@@ -7,6 +7,7 @@
       label="Back"
       size="0.8em"
       icon="arrow_back"
+      unelevated
       />
     <q-btn
       @click="nextStep"
@@ -15,6 +16,7 @@
       size="0.8em"
       class="q-ml-sm"
       icon-right="arrow_forward"
+      unelevated
       />
   </q-stepper-navigation>
 </template>
