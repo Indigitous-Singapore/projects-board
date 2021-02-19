@@ -1,10 +1,4 @@
 <template>
-<q-step
-  :name="name"
-  :prefix="name"
-  title="About Our Story"
-  :done="step && name && step > name"
->
   <div class="row q-gutter-lg">
     <div class="col">
       <q-card
@@ -19,13 +13,6 @@
       </q-card>
     </div>
   </div>
-
-  <StepperNavigation
-    :step="step"
-    :nextStep="nextStep"
-    :previousStep="previousStep"
-    />
-</q-step>
 </template>
 
 
@@ -39,20 +26,6 @@ export default defineComponent({
   components: {
     StepperNavigation,
   },
-  props: {
-    name: {
-      type: Number
-    },
-    nextStep: {
-      type: Function
-    },
-    previousStep: {
-      type: Function
-    },
-    step: {
-      type: Number
-    },
-  },
   setup() {
     const ourStory: Ref<string> = ref('')
 
@@ -60,5 +33,5 @@ export default defineComponent({
       ourStory,
     }
   }
-});
+})
 </script>

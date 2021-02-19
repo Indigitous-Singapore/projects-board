@@ -1,10 +1,4 @@
 <template>
-<q-step
-  :name="name"
-  :prefix="name"
-  title="About The Project"
-  :done="step && name && step > name"
->
   <div class="row q-gutter-lg">
     <div class="col">
       <q-card
@@ -52,43 +46,17 @@
       </q-card>
     </div>
   </div>
-
-  <StepperNavigation
-    :step="step"
-    :nextStep="nextStep"
-    :previousStep="previousStep"
-    />
-</q-step>
 </template>
 
 
 <script lang="ts">
 import { defineComponent, Ref, ref, onBeforeMount } from '@vue/composition-api'
 
-import StepperNavigation from './StepperNavigation.vue'
-
 import { useCauses } from '../../../../services/causes'
 import { useFields } from '../../../../services/fields'
 
 export default defineComponent({
   name: 'AboutTheProject',
-  components: {
-    StepperNavigation,
-  },
-  props: {
-    name: {
-      type: Number
-    },
-    nextStep: {
-      type: Function
-    },
-    previousStep: {
-      type: Function
-    },
-    step: {
-      type: Number
-    },
-  },
   setup() {
     const title: Ref<string> = ref('')
     const caption: Ref<string> = ref('')
